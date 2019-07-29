@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iknow_alert_dialog_panel_wrapper"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="20.0dip"
+    android:background="@drawable/common_alert_dialog_shape_fill_box"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/space_5"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:lineSpacingExtra="18dp"
+        android:text="标题"
+        android:textColor="#333333"
+        android:textSize="@dimen/text_18"
+        android:id="@+id/iknow_alert_dialog_content_title"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/iknow_alert_dialog_content_message"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/space_5"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:lineSpacingExtra="18dp"
+        android:text="对话框内容"
+        android:textColor="#333333"
+        android:textSize="@dimen/text_15" />
+
+    <LinearLayout
+        android:id="@+id/iknow_alert_dialog_button_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:layout_gravity="top"
+            android:layout_marginTop="7dp"
+            android:background="#ffd8d8d8" />
+        <Button
+            android:id="@+id/iknow_alert_dialog_button1"
+            android:background="@drawable/common_dialog_shape_fill_box"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textSize="@dimen/text_15"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="@color/text_color_main" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginRight="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="手机号"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/text_15"
+            android:textColor="@color/textcolor_one"
+            android:layout_height="wrap_content" />
+        <EditText
+            style="@style/SettingEditLeftStyle"
+            android:textColor="@color/textcolor_one"
+            android:inputType="phone"
+            android:id="@+id/change_phone1" />
+    </LinearLayout>
+    <View
+        style="@style/HorizontalLineStyle"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginRight="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginRight="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="验证码"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/text_15"
+            android:textColor="@color/textcolor_one"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            style="@style/SettingEditLeftStyle"
+            android:id="@+id/change_yanzhengma1"
+            android:singleLine="true"
+            android:hint="@string/string_edit_regedit_yanzhengma"
+            android:inputType="phone|number"/>
+        <View
+            style="@style/VerticalLineStyle"
+            android:layout_marginBottom="@dimen/space_5"
+            android:layout_marginTop="@dimen/space_5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="@dimen/space_10"/>
+        <com.primecloud.huafenghuang.widget.CountdownView
+            android:id="@+id/count_phone1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/space_5"
+            android:gravity="center"
+            android:text="@string/string_text_regedit_yanzhengma"
+            android:textColor="@color/text_color_red" />
+    </LinearLayout>
+
+    <View
+        style="@style/VerticalLine10Style"
+        android:layout_marginTop="@dimen/space_10"/>
+    <Button
+        android:id="@+id/btn_next_change01"
+        style="@style/button_style"
+        android:text="@string/string_btn_next" />
+</LinearLayout>

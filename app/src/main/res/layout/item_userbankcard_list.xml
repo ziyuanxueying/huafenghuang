@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@mipmap/card_bg"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/item_bankcard_name"
+        style="@style/TextView_15sp_33color"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="23dp"
+       />
+
+    <TextView
+        android:id="@+id/item_bankcard_setdefault"
+        style="@style/TextView_15sp_33color"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentRight="true"
+        android:text="（设为默认）"
+        android:visibility="gone"
+        android:textColor="@color/theme_color"/>
+
+
+
+    <TextView
+        android:id="@+id/item_bankcard_num"
+        style="@style/TextView_15sp_33color"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="23dp"
+        android:layout_below="@id/item_bankcard_name"
+        android:textSize="13sp"
+        android:textColor="#999999"
+        />
+
+    <TextView
+        android:id="@+id/item_bankcard_default"
+        style="@style/TextView_15sp_33color"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginBottom="24dp"
+        android:layout_below="@id/item_bankcard_num"
+        android:text="(默认)"/>
+
+    <ImageView
+        android:id="@+id/item_bankcard_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="16dp"
+        android:paddingBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/shanchu"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/item_bankcard_num"
+
+        />
+</RelativeLayout>

@@ -1,0 +1,78 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'com.jakewharton.butterknife'
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.android.support:design:27.1.1'
+
+    // rx家族
+    compile 'io.reactivex:rxjava:1.2.4'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.jcodecraeer:xrecyclerview:1.5.9'
+
+    // okhttp
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.squareup.okio:okio:1.11.0'
+
+    // 动态权限申请
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.0@aar'
+
+    compile 'com.google.code.gson:gson:2.8.1'
+
+
+    implementation 'com.jakewharton:butterknife:8.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
+
+
+    //  圆形图片
+    compile 'com.makeramen:roundedimageview:2.3.0'
+
+//    compile 'jp.wasabeef:glide-transformations:4.5.0'
+//    // If you want to use the GPU Filters
+//    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
+    compile 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    // 框架内的------  end
+    compile files('libs/fastjson-1.2.6.jar')
+
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+
+    api 'com.gyf.immersionbar:immersionbar:3.0.0-beta02'
+
+}

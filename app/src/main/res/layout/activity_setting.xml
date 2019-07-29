@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar"/>
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_setting_auto"
+        style="@style/SettingBarStyle"
+        android:layout_marginTop="@dimen/space_1"
+        app:bar_leftText="@string/text_setting_liuliang">
+
+        <com.primecloud.huafenghuang.widget.SwitchButton
+            android:id="@+id/sb_setting_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="@dimen/space_30"
+            android:checked="true"
+            />
+
+    </com.primecloud.huafenghuang.widget.SettingBar>
+
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_setting_zhanghao"
+        style="@style/SettingBarStyle"
+        app:bar_leftText="@string/text_setting_safe"
+        app:bar_rightIcon="@mipmap/arrow"
+        />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_setting_about"
+        style="@style/SettingBarStyle"
+        app:bar_rightIcon="@mipmap/arrow"
+        app:bar_leftText="@string/text_setting_about" />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_setting_qingchu"
+        style="@style/SettingBarStyle"
+        app:bar_rightIcon="@mipmap/arrow"
+        app:bar_leftText="@string/text_setting_clear" />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_setting_version"
+        style="@style/SettingBarStyle"
+        app:bar_rightIcon="@mipmap/arrow"
+        app:bar_leftText="@string/text_setting_version" />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_setting_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bar_centerText="@string/text_setting_getout"
+        app:bar_centerColor="@color/text_color_red"
+        app:bar_centerSize="@dimen/text_17"
+        android:layout_marginTop="@dimen/space_10"
+        app:bar_centerVisible="true"
+        />
+
+
+</LinearLayout>

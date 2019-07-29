@@ -1,0 +1,67 @@
+
+//// 说明为应用
+//apply plugin: 'com.android.application'
+
+// 说明为module
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        // 如果为module 注释applicationId
+//        applicationId "com.primecloud.primecloudpaysdk"
+//        applicationId "com.primecloud.student.phone.zhijing"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    signingConfigs {
+        debug {
+            storeFile file('release/key.keystore')//签名文件路径
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"  //签名密码
+        }
+        release {
+            storeFile file('release/key.keystore')//签名文件路径
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"  //签名密码
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            manifestPlaceholders = [ appkey_value: "f286980ad1ae763bc5f0e0596959da03"]
+        }
+        /*release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [ appkey_value: "af1ad12679ea4a468aa76f419cb72a6f"]
+        }*/
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api files('libs/alipaySdk-20180601.jar')
+    // 微信支付
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+}

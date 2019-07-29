@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tips_not_wifi">You are currently using the mobile network, the player will continue to consume traffic</string>
+    <string name="tips_not_wifi_confirm">Resume</string>
+    <string name="tips_not_wifi_cancel">Stop play</string>
+    <string name="no_url">No url</string>
+    <string name="replay">Replay</string>
+    <string name="click_to_restart">Click to try again</string>
+    <string name="video_loading_failed">Video loading failed</string>
+    <string name="show_iswifi">当前网络为非Wifi环境，是否继续观看</string>
+    <string name="cancel">取消</string>
+    <string name="continue_play">继续播放</string>
+    <string name="cut_voice">切换音频</string>
+</resources>

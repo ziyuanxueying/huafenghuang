@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_15">
+        <TextView
+            style="@style/TextView_15sp_33color"
+            android:text="收益提现"
+            android:id="@+id/ex_title"
+            android:layout_marginLeft="@dimen/space_14"/>
+        <TextView
+            android:text="-50"
+            style="@style/TextView_15sp_33color"
+            android:id="@+id/ex_money"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_14"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_15"
+        android:layout_marginBottom="@dimen/space_15">
+        <TextView
+            style="@style/TextView_15sp_33color"
+            android:id="@+id/ex_info"
+            android:text="银行卡提现"
+            android:textSize="@dimen/text_13"
+            android:textColor="@color/textcolor_income"
+            android:layout_marginLeft="@dimen/space_14"/>
+        <TextView
+            style="@style/TextView_15sp_33color"
+            android:text="2018-04-26 19:22:00"
+            android:textSize="@dimen/text_13"
+            android:textColor="@color/textcolor_income"
+            android:id="@+id/ex_time"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_14"/>
+    </RelativeLayout>
+    <View
+        style="@style/VerticalLine10Style"/>
+
+</LinearLayout>

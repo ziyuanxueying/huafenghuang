@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="14dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/time_headrv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@color/colorAccent"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/time_name"
+            style="@style/TextView_15sp_33color"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="14sp" />
+
+
+
+        <TextView
+            android:id="@+id/time_time"
+            style="@style/TextView_15sp_33color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/time_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.85"
+            android:ellipsize="end"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/time_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_14"
+        android:layout_marginRight="@dimen/space_14"
+        android:background="@drawable/shape_white_6">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/space_18"
+        android:paddingBottom="@dimen/space_25"
+        android:paddingLeft="@dimen/space_10"
+        android:paddingRight="@dimen/space_10"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/space_1"
+        android:layout_marginLeft="@dimen/space_1"
+        android:layout_marginTop="@dimen/space_1"
+        android:background="@drawable/shape_white"
+        android:id="@+id/line_course">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/time_cover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            app:riv_oval="false"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            >
+
+            <TextView
+                android:id="@+id/time_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:textColor="@color/textcolor_one"
+                android:textSize="15sp"
+                android:text="青少年心智课程"
+                android:singleLine="true"
+                android:ellipsize="end"
+                />
+
+            <TextView
+                android:id="@+id/time_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/renshu"
+                android:drawablePadding="5dp"
+                android:textColor="@color/captcah_text_color"
+                android:textSize="12sp"
+                android:layout_below="@id/time_title"
+                android:text="2.7万人学习"
+                />
+
+            <TextView
+                android:id="@+id/time_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="4dp"
+                android:text="免费课程"
+                android:textColor="@color/indicator_color_red"
+                android:background="@drawable/shape_pink"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_10"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/space_10"
+        android:layout_below="@id/line_course">
+
+        <TextView
+            android:id="@+id/time_good"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="111"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:textColor="#848484"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/dianzan_normali"/>
+
+        <TextView
+            android:id="@+id/time_copy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="111"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:textColor="#848484"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/fuzhi"/>
+
+        <TextView
+            android:id="@+id/time_forward"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="111"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:textColor="#848484"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/zhuanfa"/>
+
+
+    </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,169 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="edit_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/space_40</item>
+        <item name="android:layout_marginRight">@dimen/space_40</item>
+        <item name="android:layout_marginTop">@dimen/space_30</item>
+        <item name="android:drawablePadding">@dimen/space_13</item>
+        <item name="android:textSize">@dimen/text_13</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/captcah_text_color</item>
+        <item name="android:drawableBottom">@drawable/shape_edit</item>
+        <item name="android:padding">@dimen/space_10</item>
+    </style>
+
+    <style name="button_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/space_45</item>
+        <item name="android:layout_marginLeft">@dimen/space_40</item>
+        <item name="android:layout_marginRight">@dimen/space_40</item>
+        <item name="android:layout_marginTop">@dimen/space_35</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:background">@drawable/shape_button</item>
+    </style>
+
+    <style name="text_yanzhengma_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_gain_captcha_normal</item>
+        <item name="android:padding">@dimen/space_5</item>
+        <item name="android:textColor">@color/captcah_text_color</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--17sp  white -->
+    <style name="text_enter_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="common_alert_dialog_theme" parent="@style/BaseDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+    <style name="BaseDialog" parent="@android:style/Theme.Dialog" />
+
+    <style name="common_positive_button">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textColor">@color/orange_sh</item>
+        <item name="android:background">@drawable/common_alter_dialog_selector_rbt</item>
+        <item name="android:layout_height">45.0dip</item>
+    </style>
+
+    <style name="common_negative_button">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textColor">#ff666666</item>
+        <item name="android:background">@drawable/common_alter_dialog_selector_pbt</item>
+        <item name="android:layout_height">45.0dip</item>
+    </style>
+
+    <style name="Theme.Light.FullScreenDialogAct" parent="@style/BaseDialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">#ff555555</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+    </style>
+    <style name="TextView_15sp_33color">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/textcolor_one</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="main_menu_animstyle">
+        <item name="android:windowEnterAnimation">@anim/photo_dialog_in_anim</item>
+        <item name="android:windowExitAnimation">@anim/photo_dialog_out_anim</item>
+    </style>
+
+    <!-- 默认水平分割线样式 -->
+    <style name="HorizontalLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/driver</item>
+    </style>
+
+    <!-- 默认垂直分割线样式 -->
+    <style name="VerticalLineStyle">
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/driver</item>
+    </style>
+    <!-- 默认垂直分割线样式 10 -->
+    <style name="VerticalLine10Style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/space_10</item>
+        <item name="android:background">@color/color_backgroud</item>
+    </style>
+
+
+    <!-- 设置tab样式 -->
+    <style name="tabStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- settingbar 样式-->
+    <style name="SettingBarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/textcolor_one</item>
+    </style>
+
+    <!--line样式-->
+    <style name="SettingLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginRight">@dimen/space_40</item>
+        <item name="android:layout_marginLeft">@dimen/space_40</item>
+    </style>
+
+    <!--设置相关left字体样式-->
+    <style name="SettingTextLeftStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_15</item>
+    </style>
+    <!--设置edit样式-->
+    <style name="SettingEditLeftStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">@dimen/space_30</item>
+        <item name="android:background">@null</item>
+        <item name="android:drawablePadding">@dimen/space_13</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/text_13</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+
+
+
+</resources>

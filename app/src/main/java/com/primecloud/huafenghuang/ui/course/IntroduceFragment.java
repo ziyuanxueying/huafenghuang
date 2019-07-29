@@ -1,0 +1,310 @@
+package com.primecloud.huafenghuang.ui.course;
+
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.text.Html;
+import android.text.Spanned;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.primecloud.huafenghuang.R;
+import com.primecloud.huafenghuang.api.BizResult;
+import com.primecloud.huafenghuang.api.FengHuangApi;
+import com.primecloud.huafenghuang.api.HttpCallBack;
+import com.primecloud.huafenghuang.application.MyApplication;
+import com.primecloud.huafenghuang.ui.course.bean.CourseDetailBean;
+import com.primecloud.huafenghuang.ui.course.bean.CourseDetailsEvent;
+import com.primecloud.huafenghuang.ui.user.LoginActivity;
+import com.primecloud.huafenghuang.utils.StringUtils;
+import com.primecloud.huafenghuang.utils.ToastUtils;
+import com.primecloud.huafenghuang.utils.Utils;
+import com.primecloud.huafenghuang.utils.WebViewUtils;
+import com.primecloud.library.baselibrary.base.BasePresenterFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URL;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class IntroduceFragment extends BasePresenterFragment implements View.OnClickListener {
+
+
+    @BindView(R.id.introduce_comment_collect)
+    TextView collect;//收藏
+    @BindView(R.id.introduce_comment_message)
+    TextView text_message;//消息
+    @BindView(R.id.introduce_comment_parse)
+    TextView parse;//点赞
+    @BindView(R.id.introduce_comment_edit)
+    LinearLayout input;
+    @BindView(R.id.introduce_webView)
+    WebView webView;
+    private String myflag = "2";
+    private String isParse = "2";
+    private Drawable dr;
+    private CourseDetailBean bean;
+    private int collectCount = 0;
+    private int parseCount = 0;
+    private int messageCount = 0;
+    private String courseId;
+
+    @Override
+    public View setContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_introduce, null);
+    }
+
+    @Override
+    public void initData() {
+
+
+        courseId = getArguments().getString("courseId");
+
+
+    }
+
+
+    public void setBean(CourseDetailBean bean) {
+        this.bean = bean;
+        setData();
+    }
+
+    /**
+     * 设置数据
+     */
+    public void setData() {
+
+        if (bean != null && bean.getDataBean() != null) {
+
+            if (StringUtils.notBlank(bean.getDataBean().getCourseIntro_url())) {
+
+                WebViewUtils.WebViewLoad(webView,bean.getDataBean().getCourseIntro_url());
+            }
+
+            if (StringUtils.notBlank(bean.getDataBean().getCommentNum())) {
+                messageCount = Integer.parseInt(bean.getDataBean().getCommentNum());
+            }
+
+            if (StringUtils.notBlank(bean.getDataBean().getLikeNum())) {
+                parseCount = Integer.parseInt(bean.getDataBean().getLikeNum());
+            }
+
+            if (StringUtils.notBlank(bean.getDataBean().getFavNum())) {
+                collectCount = Integer.parseInt(bean.getDataBean().getFavNum());
+            }
+
+
+            if (bean.getDataBean().getCurrUser() != null) {
+                if (StringUtils.notBlank(bean.getDataBean().getCurrUser().getIsFav())) {
+                    myflag = bean.getDataBean().getCurrUser().getIsFav();
+                }
+
+                if (StringUtils.notBlank(bean.getDataBean().getCurrUser().getIsLike())) {
+                    isParse = bean.getDataBean().getCurrUser().getIsLike();
+                }
+            }
+
+        }
+
+
+        text_message.setText(messageCount + "");
+        CommentView.getComment(getActivity()).message.setText(messageCount + "");
+        parse.setText(parseCount + "");
+        CommentView.getComment(getActivity()).parse.setText(parseCount + "");
+        collect.setText(collectCount + "");
+        CommentView.getComment(getActivity()).collect.setText(collectCount + "");
+
+        setCollect(false);
+        setParse(false);
+
+    }
+
+
+    @Override
+    public void initListener() {
+
+    }
+
+
+    @Override
+    @OnClick({R.id.introduce_comment_message, R.id.introduce_comment_collect, R.id.introduce_comment_parse, R.id.introduce_comment_edit})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.introduce_comment_edit:
+            case R.id.introduce_comment_message:
+                CourseDetailsEvent courseDetailsEvent = new CourseDetailsEvent();
+                courseDetailsEvent.setType(0);
+                EventBus.getDefault().post(courseDetailsEvent);
+                break;
+            case R.id.introduce_comment_collect:
+                if (MyApplication.getInstance().getUserInfo() != null && StringUtils.notBlank(MyApplication.getInstance().getUserInfo().getId())) {
+                    collect(courseId, MyApplication.getInstance().getUserInfo().getId());
+                } else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+
+                }
+
+                break;
+            case R.id.introduce_comment_parse:
+                if (MyApplication.getInstance().getUserInfo() != null && StringUtils.notBlank(MyApplication.getInstance().getUserInfo().getId())) {
+                    parse(courseId, MyApplication.getInstance().getUserInfo().getId());
+                } else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
+                break;
+        }
+    }
+
+
+    /**
+     * 发送评论
+     */
+    public void postComment(String chapterId, String userId, String content) {
+        FengHuangApi.postComment(chapterId, userId, content, new HttpCallBack<BizResult>() {
+            @Override
+            public void onSuccess(String data, BizResult body) {
+                try {
+                    JSONObject jsonObject = new JSONObject(data);
+                    String msg = jsonObject.getString("message");
+                    if (msg.equals("请求处理完成")) {
+                        CommentView.getComment(getActivity()).edit.setText("");
+                        messageCount++;
+
+                        if (text_message != null) {
+                            text_message.setText(messageCount + "");
+                        }
+                        if (CommentView.getComment(getActivity()).message != null) {
+                            CommentView.getComment(getActivity()).message.setText(messageCount + "");
+                        }
+
+
+                    }
+                    ToastUtils.showToast(getActivity(), msg);
+                    CommentView.getComment(getActivity()).issend = false;
+                    CommentView.getComment(getActivity()).swipeRefresh.setRefreshing(true);
+                    CommentView.getComment(getActivity()).onRefresh();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(String data, String errorMsg) {
+                CommentView.getComment(getActivity()).issend = false;
+            }
+        });
+    }
+
+
+    /*
+     * 收藏/取消收藏
+     * */
+    public void collect(String chapterId, String userId) {
+        FengHuangApi.collectCourse(chapterId, userId, myflag, new HttpCallBack<BizResult>() {
+            @Override
+            public void onSuccess(String data, BizResult body) {
+
+                setCollect(true);
+            }
+
+            @Override
+            public void onFailure(String data, String errorMsg) {
+
+            }
+        });
+    }
+
+
+    /*
+     * 点赞/取消点赞
+     * */
+    public void parse(String chapterId, String userId) {
+        FengHuangApi.courseLikes(chapterId, userId, isParse, new HttpCallBack<BizResult>() {
+            @Override
+            public void onSuccess(String data, BizResult body) {
+
+                setParse(true);
+            }
+
+            @Override
+            public void onFailure(String data, String errorMsg) {
+
+            }
+        });
+    }
+
+
+    public void setCollect(boolean isShowCount) {
+        if (myflag.equals("1")) {
+
+            dr = getResources().getDrawable(R.mipmap.shoucang_select);
+            myflag = "2";
+            if (isShowCount) {
+                collectCount++;
+            }
+
+
+        } else {
+            myflag = "1";
+            dr = getResources().getDrawable(R.mipmap.shoucang);
+            if (isShowCount) {
+                collectCount--;
+            }
+
+        }
+
+        dr.setBounds(0, 0, dr.getMinimumWidth(), dr.getMinimumHeight());
+        collect.setCompoundDrawables(null, dr, null, null);
+        CommentView.getComment(getActivity()).collect.setCompoundDrawables(null, dr, null, null);
+        collect.setText(collectCount + "");
+        CommentView.getComment(getActivity()).collect.setText(collectCount + "");
+    }
+
+
+    public void setParse(boolean isShowCount) {
+        if (isParse.equals("1")) {
+
+            dr = getResources().getDrawable(R.mipmap.dianzan_select);
+            isParse = "2";
+            if (isShowCount) {
+                parseCount++;
+            }
+
+
+        } else {
+
+            dr = getResources().getDrawable(R.mipmap.dianzan_normali);
+            isParse = "1";
+            if (isShowCount) {
+                parseCount--;
+            }
+
+        }
+
+        dr.setBounds(0, 0, dr.getMinimumWidth(), dr.getMinimumHeight());
+        parse.setCompoundDrawables(null, dr, null, null);
+        CommentView.getComment(getActivity()).parse.setCompoundDrawables(null, dr, null, null);
+        parse.setText(parseCount + "");
+        CommentView.getComment(getActivity()).parse.setText(parseCount + "");
+    }
+
+
+
+
+
+
+
+
+}

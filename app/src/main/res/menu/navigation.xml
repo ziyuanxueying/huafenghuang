@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/select_find_icon"
+        android:title="发现" />
+    <item
+        android:id="@+id/navigation_kecheng"
+        android:icon="@drawable/select_course_icon"
+        android:title="课程" />
+    <item
+        android:id="@+id/navigation_zuoye"
+        android:icon="@drawable/select_usercenter_icon"
+        android:title="我的" />
+
+
+</menu>

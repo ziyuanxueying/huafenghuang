@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/color_backgroud"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="14dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:background="@mipmap/account_dibu"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_14"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/white"
+                    android:text="账户余额（元）"/>
+                <TextView
+                    android:id="@+id/act_aacount_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:layout_marginTop="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/act_aacount_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:singleLine="true"
+                    android:text="累计总收入："
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/act_aacount_tixian"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/theme_color"
+                    android:text="提现"
+                    android:textSize="18sp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:background="@mipmap/tixian_bg"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/color_backgroud"/>
+
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/act_aacount_bindcard"
+                app:bar_leftText="绑定银行卡"
+                app:bar_leftIcon="@mipmap/yinhangka"
+                app:bar_rightIcon="@mipmap/arrow"/>
+
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/act_aacount_bindwx"
+                app:bar_leftText="绑定微信"
+                app:bar_leftIcon="@mipmap/weixin"
+                app:bar_rightIcon="@mipmap/arrow"
+                app:bar_rightSize="13sp"
+                app:bar_rightColor="#999999"/>
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/act_aacount_auth"
+                app:bar_leftText="实名认证"
+                app:bar_leftIcon="@mipmap/renzheng"
+                app:bar_rightIcon="@mipmap/arrow"
+                app:bar_rightSize="13sp"
+                app:bar_rightColor="#999999"/>
+
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/act_aacount_getdetail"
+                app:bar_rightIcon="@mipmap/arrow"
+                app:bar_leftText="收益明细"
+                app:bar_leftIcon="@mipmap/shouyi" />
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/act_aacount_paydetail"
+                app:bar_rightIcon="@mipmap/arrow"
+                app:bar_leftText="支出明细"
+                app:bar_leftIcon="@mipmap/zhichu" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_backgroud" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="14dp"
+                android:background="@mipmap/juxing">
+
+                <TextView
+                    style="@style/TextView_15sp_33color"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="40dp"
+                    android:text="可提现金额（元）"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_15" />
+
+                <TextView
+                    android:id="@+id/act_tixian_money"
+                    style="@style/TextView_15sp_33color"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="40dp"
+                    android:paddingRight="14dp"
+
+                    android:paddingBottom="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="35sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/color_backgroud" />
+
+            <TextView
+                style="@style/TextView_15sp_33color"
+                android:layout_margin="14dp"
+                android:layout_marginTop="26dp"
+                android:text="提现方式" />
+
+            <RelativeLayout
+                android:id="@+id/act_tixian_blankview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/tixian_yinying">
+
+
+                <TextView
+                    android:id="@+id/act_tixian_name"
+                    style="@style/TextView_15sp_33color"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="28dp"
+                    android:textColor="#999999"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/act_tixian_cardnum"
+                    style="@style/TextView_15sp_33color"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@id/act_tixian_name"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="28dp"
+                    android:textColor="#999999"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="25dp"
+                    android:src="@mipmap/arrow" />
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/TextView_15sp_33color"
+                android:layout_margin="14dp"
+                android:layout_marginTop="60dp"
+                android:text="提现金额" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextView_15sp_33color"
+                    android:layout_marginLeft="30dp"
+                    android:text="¥"
+                    android:textSize="23sp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/act_tixian_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="30dp"
+                    android:inputType="number"
+                    android:background="@null"
+                    android:maxLength="9"
+                    android:singleLine="true"
+                    android:hint="提现金额必须为10元整数倍"
+                    android:paddingTop="20dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="14dp"
+                android:background="@color/color_backgroud" />
+
+            <Button
+                android:id="@+id/act_tixian_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/tixian_bt_bg"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="确认提交"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:text="
+                                                           注意事项\n
+1、每月6-8日为提现申请日，请在该期限内发起提现申请。\n
+2、提现申请款项经平台审核通过后将于7个工作日内到账。\n
+3、提现申请在审核通过后如款项未在约定期限到账请联系平台客\n服，电话：022-84829001
+"
+                android:textColor="#ff949494"
+                android:textSize="8sp" />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

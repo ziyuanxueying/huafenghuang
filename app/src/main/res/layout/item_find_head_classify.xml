@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_classify_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/heart" />
+
+    <TextView
+        android:id="@+id/item_classify_tv"
+        style="@style/TextView_15sp_33color"
+        android:layout_marginTop="8dp"
+        android:text="心灵"
+        android:layout_marginBottom="15dp"
+        android:textSize="13sp" />
+</LinearLayout>

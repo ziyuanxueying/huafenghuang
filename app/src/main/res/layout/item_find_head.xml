@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/item_head_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_new"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        app:layout_constraintTop_toTopOf="@id/item_head_search"
+        app:layout_constraintBottom_toBottomOf="@id/item_head_search"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp" />
+
+
+    <com.youth.banner.Banner
+        android:id="@+id/item_head_banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+
+        app:layout_constraintDimensionRatio="w,130:349"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_head_search" />
+
+
+    <TextView
+        android:id="@+id/item_head_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/search"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintRight_toLeftOf="@id/item_head_yinpin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/item_head_message"
+        />
+
+    <ImageView
+        android:id="@+id/item_head_yinpin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/yinpin"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        app:layout_constraintTop_toTopOf="@id/item_head_search"
+        app:layout_constraintBottom_toBottomOf="@id/item_head_search"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingEnd="12dp"
+        android:paddingStart="8dp" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/item_head_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_14"
+        android:layout_marginRight="@dimen/space_14"
+        android:layout_marginTop="@dimen/space_15"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_head_banner"
+
+        />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+    <View
+        style="@style/VerticalLine10Style"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="14dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:background="@mipmap/di"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_27"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/white"
+                    android:text="@string/text_team_num"
+                    />
+                <TextView
+                    android:id="@+id/team_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="46sp"
+                    android:layout_marginTop="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="@dimen/space_22"
+                    android:layout_marginRight="@dimen/space_22">
+
+                    <TextView
+                        android:id="@+id/act_team_yi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:singleLine="true"
+                        android:text="@string/text_team_yiyong"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/act_team_wei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="26dp"
+                        android:singleLine="true"
+                        android:text="@string/text_team_weiyong"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                style="@style/VerticalLine10Style"/>
+
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sb_team_hy"
+                app:bar_leftText="@string/text_team_huiyuan"/>
+
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sb_team_hehuoren"
+                app:bar_leftText="@string/text_team_hehuoren"/>
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sb_team_fengongsi"
+                app:bar_leftText="@string/text_team_fen"/>
+
+            <com.primecloud.huafenghuang.widget.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sb_team_zongzongsi"
+                app:bar_lineVisible="false"
+                app:bar_leftText="@string/text_team_zong" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

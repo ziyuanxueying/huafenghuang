@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <include layout="@layout/toolbar" />
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/white"
+        android:id="@+id/head_info">
+        <com.primecloud.huafenghuang.widget.CircleImageView
+            android:id="@+id/info_head"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/touxiang"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignBottom="@+id/info_head"
+            android:layout_alignRight="@+id/info_head"
+            android:src="@mipmap/xiangji" />
+    </RelativeLayout>
+    <View
+        style="@style/VerticalLine10Style"/>
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_info_nick"
+        style="@style/SettingBarStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:bar_lineMargin="@dimen/space_10"
+        app:bar_leftText="@string/text_info_nick"
+        app:bar_rightIcon="@mipmap/arrow" />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_info_birth"
+        style="@style/SettingBarStyle"
+        app:bar_lineMargin="@dimen/space_10"
+        app:bar_rightIcon="@mipmap/arrow"
+        app:bar_leftText="@string/text_info_birthday" />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_info_phone"
+        style="@style/SettingBarStyle"
+        app:bar_lineMargin="@dimen/space_10"
+        app:bar_leftText="@string/text_info_phone"
+        />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_info_in"
+        style="@style/SettingBarStyle"
+        app:bar_lineMargin="@dimen/space_10"
+        app:bar_leftText="@string/text_info_in" />
+    <com.primecloud.huafenghuang.widget.SettingBar
+        android:id="@+id/sb_info_add"
+        style="@style/SettingBarStyle"
+        app:bar_rightIcon="@mipmap/arrow"
+        app:bar_lineMargin="@dimen/space_10"
+        app:bar_leftText="@string/text_info_address" />
+</LinearLayout>

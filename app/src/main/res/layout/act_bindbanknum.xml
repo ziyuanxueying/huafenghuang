@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#f7f7f7"/>
+
+    <com.primecloud.huafenghuang.widget.TipsFillBar
+        android:id="@+id/act_bindbank_banknum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="19"
+        app:tip_tvText="卡          号"
+        app:tip_tvColor="#333333"
+        app:tip_tvSize="15sp"
+        app:tip_etHint="请输入卡号"
+        app:tip_etSize="13sp"
+
+        />
+
+    <com.primecloud.huafenghuang.widget.TipsFillBar
+        android:id="@+id/act_bindbank_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tip_tvText="持   卡   人"
+        app:tip_tvColor="#333333"
+        app:tip_tvSize="15sp"
+        app:tip_etHint="请输入持卡人姓名"
+        app:tip_etSize="13sp"
+        app:tip_etBg="@null"
+        />
+
+    <com.primecloud.huafenghuang.widget.TipsFillBar
+        android:id="@+id/act_bindbank_bankname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tip_tvText="银 行 名 称"
+        app:tip_tvColor="#333333"
+        app:tip_tvSize="15sp"
+        app:tip_etHint="请选择开户银行"
+        app:tip_etSize="13sp"
+        app:tip_etBg="@null"
+        app:tip_lineVisible="false"
+        android:focusable="false"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#f7f7f7"/>
+
+    <Button
+        android:id="@+id/act_bindbank_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@mipmap/tixian_bt_bg"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FC373C</color>
+    <color name="colorPrimaryDark">#FC373C</color>
+    <color name="colorAccent">#FC373C</color>
+
+    <color name="theme_color">#FC373C</color>
+
+    <color name="tab_checked">#FDA43A</color>
+    <color name="tab_unchecked">#333333</color>
+    <color name="textcolor_login">#FF999999</color>
+    <color name="textcolor_select">#209eea</color>
+    <color name="buttonbackgroud">#ccc</color>
+    <color name="text_color_gray">#838383</color>
+    <color name="captcah_text_color">#999999</color>
+    <color name="color_blue">#576b95</color>
+    <color name="video_delete_text">#FFB4B4B4</color>
+    <color name="red_delete">#cd465a</color>
+    <color name="black_70">#70000000</color>
+    <color name="indicator_color_red">#FC363C</color>
+    <color name="white80">#80000000</color>
+    <color name="orange">#ff6400</color>
+    <color name="text_color_red">#FC363C</color>
+    <color name="text_color_black_de">#F72222</color>
+    <color name="transparence">#30000000</color>
+    <color name="driver">#E5E5E5</color>
+    <color name="text_pay_give">#282828</color>
+    <color name="textcolor_one">#333333</color>
+    <color name="textcolor_two">#666666</color>
+    <color name="textcolor_three">#A3A3A3</color>
+    <color name="textcolor_green">#31C27C</color>
+    <color name="try_read_green">#60DFA2</color>
+    <color name="mediacontroller_bg">#99000000</color>
+    <color name="mediacontroller_bg_pressed">#ff53c1bd</color>
+    <color name="color_backgroud">#F7F7F7</color>
+    <color name="pay_textcolor">#25BD55</color>
+    <color name="topic_color">#3D6FA7</color>
+    <color name="peach">#F65C6D</color>
+    <color name="peach_pink">#F6677C</color>
+    <color name="light_blue">#35B9FE</color>
+    <color name="text_color_main">#FC443A</color>
+    <color name="textcolor_login_hint">#C2C2C9</color>
+    <color name="textcolor_income">#6D6D6D</color>
+
+    <color name="home_backgroud">#FDFDFD</color>
+
+    <color name="driver_one">#ffe5e5e5</color>
+    <color name="driver_two">#f2f2f2</color>
+    <color name="fftransparent">#00FFFFFF</color>
+    <color name="white">#ffffff</color>
+    <color name="orange_sh">#FDA43A</color>
+    <color name="orange_type">#FFAD1E</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_pink">#FFEBEB</color>
+    <color name="text_vip">#614F24</color>
+    <color name="comment_backgroud">#F4F4F4</color>
+
+</resources>

@@ -1,0 +1,170 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'com.mob.sdk'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+// 正式环境
+def API_RELEASE_HOST = "\"http://api.huaxiachangxiang.com/\""
+
+// 测试环境
+//def API_DEBUG_HOST = "\"http://api.huafenghuang.issac.top/\""
+def API_DEBUG_HOST = "\"http://api.huaxiachangxiang.com/\""
+
+// 图片地址
+def API_PIC_HOST = "\"\""
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.primecloud.huafenghuang"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../reseale/FengHuang.jks')//签名文件路径
+            storePassword "123456"
+            keyAlias "fenghuang"
+            keyPassword "123456"  //签名密码
+        }
+        release {
+            storeFile file('../reseale/FengHuang.jks')//签名文件路径
+            storePassword "123456"
+            keyAlias "fenghuang"
+            keyPassword "123456"  //签名密码
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "DEBUG_LOG", "false"
+            buildConfigField "String", "URL", "${API_RELEASE_HOST}"
+            buildConfigField "String", "PIC_URL", "${API_PIC_HOST}"
+
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            // 自定义BuildConfig变量 是否显示log
+            buildConfigField "boolean", "DEBUG_LOG", "true"
+            buildConfigField "String", "URL", "${API_DEBUG_HOST}"
+            buildConfigField "String", "PIC_URL", "${API_PIC_HOST}"
+
+
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "FengHuang_${buildType.name}_${defaultConfig.versionCode}-${defaultConfig.versionName}-${releaseTime()}.apk"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+
+
+MobSDK {
+    appKey "2b83ad554645e"
+    appSecret "10cf4b650e18586222b3dac2f1d20b62"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+
+            Wechat {
+                appId "wxd87d46e79456b626"
+                appSecret "035b37df66f35d1b62e778e2e0827cfc"
+            }
+
+            WechatMoments {
+                appId "wxd87d46e79456b626"
+                appSecret "035b37df66f35d1b62e778e2e0827cfc"
+            }
+
+            QQ {
+                appId "101681655"
+                appKey "e5686151a3c848ef1a7a9a138b166e6d"
+                shareByAppClient true
+            }
+            /*SinaWeibo {
+                appKey "568898243"
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient false
+            }
+            Facebook {
+                appKey "1412473428822331"
+                appSecret "a42f4f3f867dc947b9ed6020c2e93558"
+                callbackUri "https://mob.com"
+            }*/
+        }
+    }
+
+}
+
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.jakewharton:butterknife:8.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation project(':baselibrary')
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
+    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.google.code.gson:gson:2.3.1'
+    implementation 'com.contrarywind:Android-PickerView:3.2.5'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation project(':jiaozivideoplayer')
+    implementation project(':primecloudpaysdk')
+    implementation files('libs/xUtils-2.6.14.jar')
+    implementation 'org.jsoup:jsoup:1.10.2'
+    //    implementation 'com.contrarywind:Android-PickerView:4.1.8'
+    implementation 'com.github.razerdp:BasePopup:2.2.0'
+    implementation 'com.tencent.bugly:crashreport:3.0.0'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    implementation project(':picture_library')
+    implementation project(':easyswipemenulibrary')
+}

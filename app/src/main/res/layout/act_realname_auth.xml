@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#f7f7f7"/>
+
+    <com.primecloud.huafenghuang.widget.TipsFillBar
+        android:id="@+id/act_realname_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tip_tvText="真实姓名"
+        app:tip_tvColor="#333333"
+        app:tip_tvSize="15sp"
+        app:tip_etHint="请输入真实姓名"
+        app:tip_etSize="13sp"
+        />
+
+    <com.primecloud.huafenghuang.widget.TipsFillBar
+        android:id="@+id/act_realname_idcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tip_tvText="身份证号"
+        app:tip_tvColor="#333333"
+        app:tip_tvSize="15sp"
+        app:tip_etHint="请输入身份证号"
+        app:tip_etSize="13sp"
+        app:tip_etBg="@null"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请确保以上信息与您绑定的提现银行卡/微信实名信息一致，否则将导致提现失败"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#ffea5513"
+        android:textSize="13sp"
+        android:layout_marginTop="14dp"
+        />
+
+    <Button
+        android:id="@+id/act_realname_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@mipmap/tixian_bt_bg"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="确认"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</LinearLayout>

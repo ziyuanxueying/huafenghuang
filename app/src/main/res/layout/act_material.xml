@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_backgroud"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:id="@+id/act_material_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/act_material_pic_rootview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/act_material_pictv"
+                    style="@style/TextView_15sp_33color"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="图片素材" />
+
+                <View
+                    android:id="@+id/act_material_pic_indicator"
+                    android:layout_width="15dp"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/act_material_pictv"
+                    android:layout_gravity="center"
+                    android:background="#fc363c" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/act_material_pic_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/act_material_pic_rootview"
+                android:paddingLeft="8dp"
+                android:paddingTop="20dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="20dp"
+                android:src="@mipmap/xiala" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/act_material_video_rootview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/act_material_videotv"
+                    style="@style/TextView_15sp_33color"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="视频素材" />
+
+                <View
+                    android:id="@+id/act_material_video_indicator"
+                    android:layout_width="15dp"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/act_material_videotv"
+                    android:layout_gravity="center"
+                    android:background="#fc363c"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/act_material_video_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/act_material_video_rootview"
+                android:paddingLeft="8dp"
+                android:paddingTop="20dp"
+
+                android:paddingRight="8dp"
+                android:paddingBottom="20dp"
+                android:src="@mipmap/xiala" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/act_material_videopager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <LinearLayout
+            android:id="@+id/act_material_choiceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="#80000000">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/act_material_recyclerview"
+                android:layout_width="match_parent"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingBottom="14dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>
