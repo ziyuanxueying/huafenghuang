@@ -201,7 +201,6 @@
                 android:text="@string/cut_voice"
                 android:textColor="#ffffff"
                 android:textSize="11sp"
-                android:visibility="gone"
                 />
 
             <ImageView

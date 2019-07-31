@@ -17,8 +17,9 @@
         android:layout_marginLeft="@dimen/space_14"
         android:layout_marginRight="@dimen/space_14">
         <com.primecloud.huafenghuang.widget.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
             android:src="@mipmap/touxiang"
             android:id="@+id/huiyuan_touxiang"/>
         <RelativeLayout

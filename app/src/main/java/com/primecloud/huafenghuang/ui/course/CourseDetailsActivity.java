@@ -1,26 +1,21 @@
 package com.primecloud.huafenghuang.ui.course;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.primecloud.huafenghuang.R;
 import com.primecloud.huafenghuang.api.BizResult;
 import com.primecloud.huafenghuang.api.FengHuangApi;
 import com.primecloud.huafenghuang.api.HttpCallBack;
-import com.primecloud.huafenghuang.api.NetWorks;
 import com.primecloud.huafenghuang.application.MyApplication;
 import com.primecloud.huafenghuang.ui.course.bean.CommentBean;
 import com.primecloud.huafenghuang.ui.course.bean.CourseDetailBean;
@@ -30,19 +25,14 @@ import com.primecloud.huafenghuang.ui.home.coursefragment.bean.CourseBean;
 import com.primecloud.huafenghuang.ui.share.ShareUtils;
 import com.primecloud.huafenghuang.utils.StringUtils;
 import com.primecloud.huafenghuang.utils.Utils;
-import com.primecloud.huafenghuang.utils.ViewUtils;
 import com.primecloud.huafenghuang.video.VideoUtils;
 import com.primecloud.library.baselibrary.base.BasePresenterActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import butterknife.BindView;
-import cn.jzvd.Jzvd;
 import cn.sharesdk.framework.Platform;
 
 public class CourseDetailsActivity extends BasePresenterActivity<CoursePresenter, CourseModel> implements CourseContract.View {
@@ -428,6 +418,8 @@ public class CourseDetailsActivity extends BasePresenterActivity<CoursePresenter
         if (videoUtils != null) {
             videoUtils.onPause();
         }
+
+        Log.i("sss","暂停。。。。。。。。。。。。。"+videoUtils.mJzvdStd.isMusic);
     }
 
     @Override

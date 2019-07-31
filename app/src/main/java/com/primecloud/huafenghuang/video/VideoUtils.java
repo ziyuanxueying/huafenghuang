@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Configuration;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
@@ -15,24 +14,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.primecloud.huafenghuang.R;
-import com.primecloud.huafenghuang.api.NetWorks;
 import com.primecloud.huafenghuang.ui.course.bean.CourseDetailsEvent;
 import com.primecloud.huafenghuang.utils.StringUtils;
 import com.primecloud.huafenghuang.utils.ToastUtils;
 import com.primecloud.huafenghuang.utils.Utils;
-import com.primecloud.huafenghuang.utils.ViewUtils;
 import com.primecloud.library.baselibrary.log.XLog;
 
-
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.LinkedHashMap;
 
 import cn.jzvd.JZDataSource;
 import cn.jzvd.JZMediaManager;
@@ -191,6 +184,7 @@ public class VideoUtils implements View.OnClickListener {
 
     public void onResume() {
 
+        XLog.i("mJzvdStd.isMusic  onResume :"+mJzvdStd.isMusic);
         if (!mJzvdStd.isMusic) {
             Sensor accelerometerSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             mSensorManager.registerListener(mSensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
@@ -204,7 +198,7 @@ public class VideoUtils implements View.OnClickListener {
 
 
     public void onPause() {
-
+        XLog.i("mJzvdStd.isMusic  onPause :"+mJzvdStd.isMusic);
         if (!mJzvdStd.isMusic) {
             mSensorManager.unregisterListener(mSensorEventListener);
             Jzvd.clearSavedProgress(mContext, null);
@@ -275,7 +269,6 @@ public class VideoUtils implements View.OnClickListener {
                 ((Activity) mContext).finish();
                 break;
             case R.id.jz_cut_voice://切换音视频
-
 
                 if (mJzvdStd.isMusic) {
                     video(linearLayout);
@@ -402,6 +395,7 @@ public class VideoUtils implements View.OnClickListener {
      */
     public void audio(LinearLayout linear) {
 
+        Log.i("sss","音頻，，，，，，，，，，，，，，，，");
         addView(linear);
 
         mJzvdStd.cut_voice.setText(mContext.getResources().getString(R.string.cut_video));
@@ -410,8 +404,10 @@ public class VideoUtils implements View.OnClickListener {
             mJzvdStd.textureViewContainer.removeAllViews();
             mJzvdStd.textureViewContainer.setVisibility(View.VISIBLE);
         }
+        Log.i("sss","音頻，，，，，，，，，，，，，，，，AAAA");
         addPic(mContext);
         mJzvdStd.isMusic = true;
+        Log.i("sss","音頻，，，，，，，，，，，，，，，，BBBB");
     }
 
 
@@ -419,21 +415,24 @@ public class VideoUtils implements View.OnClickListener {
      * 视频
      */
     public void video(LinearLayout linear) {
-
+        Log.i("sss","視頻，，，，，，，，，，，，，，，，");
         addView(linear);
         mJzvdStd.cut_voice.setText(mContext.getResources().getString(R.string.cut_voice));
         mJzvdStd.fullscreenButton.setVisibility(View.VISIBLE);
         if (mJzvdStd.textureViewContainer != null && JZMediaManager.textureView != null) {
+            Log.i("sss","音頻，，，，，，，，，，，，，，，，AAAA");
             mJzvdStd.textureViewContainer.removeAllViews();
             mJzvdStd.textureViewContainer.setVisibility(View.VISIBLE);
             ViewGroup parent = (ViewGroup) JZMediaManager.textureView.getParent();
             if (parent != null) {
                 parent.removeAllViews();
             }
+            Log.i("sss","音頻，，，，，，，，，，，，，，，，BBBBB");
             mJzvdStd.textureViewContainer.addView(JZMediaManager.textureView);
         }
-
+        Log.i("sss","音頻，，，，，，，，，，，，，，，，CCCC");
         mJzvdStd.isMusic = false;
+        Log.i("sss","音頻，，，，，，，，，，，，，，，，DDDDDD");
     }
 
 

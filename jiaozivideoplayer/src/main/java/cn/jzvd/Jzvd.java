@@ -188,9 +188,10 @@ public abstract class Jzvd extends FrameLayout implements View.OnClickListener, 
     }
 
     public static boolean backPress() {
-        Log.i(TAG, "backPress");
+        Log.i(TAG, "backPress  1111111111111............"+isMusic);
         if ((System.currentTimeMillis() - CLICK_QUIT_FULLSCREEN_TIME) < FULL_SCREEN_NORMAL_DELAY)
             return false;
+
 
         if (JzvdMgr.getSecondFloor() != null) {
             Log.i(TAG, "22222222222222222222222");
@@ -202,21 +203,21 @@ public abstract class Jzvd extends FrameLayout implements View.OnClickListener, 
                         JZUserAction.ON_QUIT_FULLSCREEN :
                         JZUserAction.ON_QUIT_TINYSCREEN);
 
-                if (isShowShare || isShowCut)
-                {
-                    View child = textureViewContainer.getChildAt(0);
-                    if (child != null&&child ==JZMediaManager.textureView)
-                    {
-                        isMusic = true;
-                    }
-                    else
-                    {
-                        isMusic = false;
-                    }
+//                if (isShowShare || isShowCut)
+//                {
+//                    View child = textureViewContainer.getChildAt(0);
+//                    if (child != null&&child ==JZMediaManager.textureView)
+//                    {
+//                        isMusic = true;
+//                    }
+//                    else
+//                    {
+//                        isMusic = false;
+//                    }
+//
+//                }
 
-                }
-
-
+                Log.i(TAG, "backPress2222222222222222222222"+isMusic);
 
                 JzvdMgr.getFirstFloor().playOnThisJzvd();
 
@@ -1095,19 +1096,23 @@ public abstract class Jzvd extends FrameLayout implements View.OnClickListener, 
             vp.removeView(old);
         }
 
-        if (isShowShare || isShowCut)
-        {
-            View child = textureViewContainer.getChildAt(0);
-            if (child != null&&child ==JZMediaManager.textureView)
-            {
-                isMusic = true;
-            }
-            else
-            {
-                isMusic = false;
-            }
+        Log.i(TAG, "startWindowFullscreen  11111111111111111111 " + isShowShare +"..........."+isShowCut+"........"+isMusic);
 
-        }
+
+//        if (isShowShare || isShowCut)
+//        {
+//            View child = textureViewContainer.getChildAt(0);
+//            if (child != null&&child ==JZMediaManager.textureView)
+//            {
+//                isMusic = true;
+//            }
+//            else
+//            {
+//                isMusic = false;
+//            }
+//
+//        }
+        Log.i(TAG, "startWindowFullscreen .............. " + isShowShare +"..........."+isShowCut+"........"+isMusic);
 
 
         textureViewContainer.removeView(JZMediaManager.textureView);
@@ -1142,6 +1147,7 @@ public abstract class Jzvd extends FrameLayout implements View.OnClickListener, 
             {
                 cut_voice = jzvd.findViewById(R.id.jz_cut_voice);
                 myShare = jzvd.findViewById(R.id.jz_share);
+                cut_voice.setOnClickListener(clickListener);
                 textureViewContainer = jzvd.findViewById(R.id.surface_container);
             }
 
