@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.Headers;
 import retrofit2.Response;
 import rx.Subscriber;
 
@@ -30,6 +31,14 @@ public abstract class BaseSubscrible<T> extends Subscriber<T> {
     public void onNext(T t) {
         if (t instanceof Response) {
             Response response = (Response) t;
+            Headers headers = response.headers();
+
+            String tokenCode = headers.get("tokencode");
+            if("10000".equals(tokenCode)){
+                onError(new TokenInvalidError("登录异常"));
+                return;
+            }
+
             int code = response.code();
 
             if (code >= 200 && code < 300) {
@@ -76,6 +85,7 @@ public abstract class BaseSubscrible<T> extends Subscriber<T> {
             Activity activity = AppManager.getInstance().getTopActivity();
 
             Intent intent = new Intent(activity, LoginActivity.class);
+            intent.putExtra("isLogin", 1);
             MyApplication.doLogout(activity);
             AppManager.getInstance().finishAllActivity();
 

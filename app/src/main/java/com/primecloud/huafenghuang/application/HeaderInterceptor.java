@@ -3,7 +3,7 @@ package com.primecloud.huafenghuang.application;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.primecloud.huafenghuang.ui.user.UserInfo;
+import com.primecloud.library.baselibrary.log.XLog;
 
 import java.io.IOException;
 
@@ -25,6 +25,7 @@ public class HeaderInterceptor implements Interceptor {
         Request.Builder builder = chain.request().newBuilder();
 
         String token = MyApplication.getInstance().getToken();
+        XLog.i("token111111111111111:"+token);
         if (!TextUtils.isEmpty(token))
             builder.addHeader("token", token);
         return chain.proceed(builder.build());

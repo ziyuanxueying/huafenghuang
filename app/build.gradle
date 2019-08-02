@@ -11,7 +11,7 @@ def API_RELEASE_HOST = "\"http://api.huaxiachangxiang.com/\""
 
 // 测试环境
 //def API_DEBUG_HOST = "\"http://api.huafenghuang.issac.top/\""
-def API_DEBUG_HOST = "\"http://api.huaxiachangxiang.com/\""
+def API_DEBUG_HOST = "\"http://test.huaxiachangxiang.com/\""
 
 // 图片地址
 def API_PIC_HOST = "\"\""
@@ -22,8 +22,8 @@ android {
         applicationId "com.primecloud.huafenghuang"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {

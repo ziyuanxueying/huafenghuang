@@ -86,6 +86,11 @@ public class MyApplication extends BaseApplication {
      * @param user
      */
     public static void doLogin(Context context, UserInfo user) {
+        // 为了防止获取用户信息时，把token的值给覆盖了。
+        if( MyApplication.getInstance().getUserInfo().getToken() != null){
+            user.setToken(MyApplication.getInstance().getUserInfo().getToken());
+        }
+
         Storage.saveObject(AppConfig.USER_INFO, user);
         Preference.saveStringPreferences(appContext, AppConfig.USER_ID, user.getId());
         MyApplication.getInstance().init();
@@ -108,6 +113,7 @@ public class MyApplication extends BaseApplication {
 
     private void init() {
         userInfo = Storage.getObject(AppConfig.USER_INFO, UserInfo.class);
+
         if (userInfo == null) {
             userInfo = new UserInfo();
         }

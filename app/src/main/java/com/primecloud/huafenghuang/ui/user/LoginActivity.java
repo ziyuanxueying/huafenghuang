@@ -124,6 +124,7 @@ public class LoginActivity extends BasePresenterActivity<LoginPresenter,LoginMod
     public void loginToActivity(LoginBean loginBean) {
         DialogUtils.showProgressDialogWithMessage(LoginActivity.this,getResources().getString(R.string.loading_user_info));
         MyApplication.doLogin(LoginActivity.this, loginBean.getData());
+
         if(isLogin == 1){
             Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
