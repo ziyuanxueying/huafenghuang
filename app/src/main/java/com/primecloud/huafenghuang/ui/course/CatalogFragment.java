@@ -240,11 +240,26 @@ public class CatalogFragment extends BasePresenterFragment<CoursePresenter, Cour
                         }
                         else
                         {
-                            buy(data);
+                            if(dataBean.getPrice() != 0 || dataBean.getSalePrice() != 0)
+                            {
+                                buy(data);
+                            }
+                            else
+                            {
+                               buyVip();
+                            }
+
                         }
                     } else {
 
-                        buy(data);
+                        if(dataBean.getPrice() != 0 || dataBean.getSalePrice() != 0)
+                        {
+                            buy(data);
+                        }
+                        else
+                        {
+                            buyVip();
+                        }
                     }
                 }
 
@@ -255,7 +270,7 @@ public class CatalogFragment extends BasePresenterFragment<CoursePresenter, Cour
     }
 
     /*
-    * 购买*/
+    * 购买课程*/
     public void buy(CourseDetailBean.DataBean.CatalogBean.CatalogRecordsBean data)
     {
         if (Utils.isLogin(getActivity())) {
@@ -273,6 +288,19 @@ public class CatalogFragment extends BasePresenterFragment<CoursePresenter, Cour
             getActivity().startActivity(intent);
         }
 
+    }
+
+
+    /**
+     * 购买Vip
+     * */
+    public void buyVip()
+    {
+        if (Utils.isLogin(getActivity())) {
+            Intent intentvip = new Intent(getActivity(), DredgeVIPActivity.class);
+            intentvip.putExtra("type", 1);
+            getActivity().startActivity(intentvip);
+        }
     }
 
     @Override
@@ -362,11 +390,7 @@ public class CatalogFragment extends BasePresenterFragment<CoursePresenter, Cour
 
                 break;
             case R.id.catalog_vip:
-                if (Utils.isLogin(getActivity())) {
-                    Intent intentvip = new Intent(getActivity(), DredgeVIPActivity.class);
-                    intentvip.putExtra("type", 1);
-                    getActivity().startActivity(intentvip);
-                }
+               buyVip();
 
 
                 break;
