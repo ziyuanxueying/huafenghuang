@@ -33,7 +33,6 @@ import com.primecloud.huafenghuang.utils.StringUtils;
 import com.primecloud.huafenghuang.utils.ToastUtils;
 import com.primecloud.huafenghuang.utils.Utils;
 import com.primecloud.library.baselibrary.base.BasePresenterFragment;
-import com.primecloud.library.baselibrary.log.XLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -248,7 +247,8 @@ public class FindFragment extends BasePresenterFragment<FindPresenter, FindModel
                 @Override
                 public void onSuccess(String data, BizResult body) {
                     UserInfo information = JSON.parseObject(body.getData(), UserInfo.class);
-                    XLog.i(information.toString());
+                    if(information == null)
+                        return;
                     adapter.setMessageNotify(information.isUnreadedMessageExist());
                 }
 

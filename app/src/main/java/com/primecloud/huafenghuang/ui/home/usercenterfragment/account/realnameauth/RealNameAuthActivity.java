@@ -33,6 +33,11 @@ public class RealNameAuthActivity extends BasePresenterActivity<RealNameAuthPres
     protected void initData() {
 
         mToolbar.setToolbarTitleContent("实名认证");
+
+        isIsBindingRealName = getIntent().getBooleanExtra("isIsBindingRealName", false);
+
+
+
         String idCard = getIntent().getStringExtra("idCard");
         if(!TextUtils.isEmpty(idCard)){
             actRealnameIdcard.setTipEtText(idCard);
@@ -42,6 +47,14 @@ public class RealNameAuthActivity extends BasePresenterActivity<RealNameAuthPres
         if(!TextUtils.isEmpty(realName)){
             actRealnameName.setTipEtText(realName);
             actRealnameName.getTipEt().setSelection(realName.length());
+        }
+
+        if(isIsBindingRealName){
+            actRealnameIdcard.getTipEt().setEnabled(false);
+
+            actRealnameName.getTipEt().setEnabled(false);
+
+            actRealnameOk.setEnabled(false);
         }
     }
 

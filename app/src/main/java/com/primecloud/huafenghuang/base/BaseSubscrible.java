@@ -11,6 +11,7 @@ import com.primecloud.huafenghuang.ui.user.LoginActivity;
 import com.primecloud.library.baselibrary.base.AppManager;
 import com.primecloud.library.baselibrary.error.NoDataError;
 import com.primecloud.library.baselibrary.error.TokenInvalidError;
+import com.primecloud.library.baselibrary.log.XLog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +35,7 @@ public abstract class BaseSubscrible<T> extends Subscriber<T> {
             Headers headers = response.headers();
 
             String tokenCode = headers.get("tokencode");
+            XLog.i("tokenCode:"+tokenCode+"..."+"10000".equals(tokenCode));
             if("10000".equals(tokenCode)){
                 onError(new TokenInvalidError("登录异常"));
                 return;
@@ -80,16 +82,17 @@ public abstract class BaseSubscrible<T> extends Subscriber<T> {
         if (e instanceof NoDataError) {
         } else if (e instanceof TokenInvalidError) {// tonken失效
 
+            XLog.i(e.getMessage());
             onFail(e.getMessage());
 
             Activity activity = AppManager.getInstance().getTopActivity();
 
-            Intent intent = new Intent(activity, LoginActivity.class);
+            Intent intent = new Intent(MyApplication.getInstance(), LoginActivity.class);
             intent.putExtra("isLogin", 1);
             MyApplication.doLogout(activity);
             AppManager.getInstance().finishAllActivity();
-
-            activity.startActivity(intent);
+//
+            MyApplication.getInstance().startActivity(intent);
 
         } else if (e instanceof IllegalStateException) {
             onError(new Throwable("未知异常"));

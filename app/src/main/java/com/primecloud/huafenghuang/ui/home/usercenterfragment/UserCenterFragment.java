@@ -307,6 +307,8 @@ public class UserCenterFragment extends BasePresenterFragment implements InfoInt
                 public void onSuccess(String data, BizResult body) {
                     UserInfo userInfo = JSON.parseObject(body.getData(), UserInfo.class);
                     UserInfo Information = MyApplication.getInstance().getUserInfo();
+                    if(Information == null || userInfo == null)
+                        return;
                     UserInfo info = new UserInfo(Information.getCityId(), Information.getCode(), Information.getId(), Information.getPhone(), Information.getPic(), Information.getProvinceId(), Information.getUsername(), Information.getBirthday(), userInfo.getBalance(), userInfo.getExpireTime(), userInfo.getIsVip(), userInfo.getRecommenderName(), userInfo.getLevel(),userInfo.isUnreadedMessageExist());
                     info.setToken(Information.getToken());
                     MyApplication.doLogin(getActivity(), info);

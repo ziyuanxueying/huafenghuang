@@ -88,7 +88,7 @@ public class AccountActivity extends BasePresenterActivity<AccountPresenter, Acc
                 break;
             case R.id.act_aacount_bindwx:
                 if(isIsBindingWechat){
-                    setDialog();
+//                    setDialog();
                 }else{
                     ShareUtils.qqWxLogin(this, 1, this);
                 }
@@ -97,6 +97,7 @@ public class AccountActivity extends BasePresenterActivity<AccountPresenter, Acc
                 intent = new Intent(this, RealNameAuthActivity.class);
                 intent.putExtra("idCard", idCard);
                 intent.putExtra("realName", realName);
+                intent.putExtra("isIsBindingRealName", isIsBindingRealName);
                 break;
             case R.id.act_aacount_getdetail:
                 intent = new Intent(this, IncomeInfoActivity.class);
