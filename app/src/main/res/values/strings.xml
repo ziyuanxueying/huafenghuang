@@ -30,6 +30,8 @@
     <string name="string_clear_message">是否清空缓存?</string>
     <string name="string_clear_sure">确定</string>
     <string name="string_clear_cancle">取消</string>
+    <string name="string_login_xiyi">登录表示您同意“用户协议”和“隐私协议”</string>
+    <string name="string_register_xiyi">注册表示您同意“用户协议”和“隐私协议”</string>
 
     <!--忘记密码部分-->
     <string name="string_text_forget_title">忘记密码</string>

@@ -4,13 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.primecloud.huafenghuang.R;
 import com.primecloud.huafenghuang.application.MyApplication;
 import com.primecloud.huafenghuang.helper.InputTextHelper;
+import com.primecloud.huafenghuang.helper.UIHelper;
 import com.primecloud.huafenghuang.ui.home.HomeActivity;
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.activity.set.SettingActivity;
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.activity.set.SimpleBackPage;
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.activity.set.fragment.AboutFragment;
 import com.primecloud.huafenghuang.ui.user.login.LoginBean;
 import com.primecloud.huafenghuang.ui.user.login.LoginContact;
 import com.primecloud.huafenghuang.ui.user.login.LoginModel;
@@ -61,7 +66,7 @@ public class LoginActivity extends BasePresenterActivity<LoginPresenter,LoginMod
     protected void initEvent() {
 
     }
-    @OnClick({R.id.text_zhuce, R.id.text_forget, R.id.btn_login,R.id.login_img_wechat,R.id.login_img_qq})
+    @OnClick({R.id.text_zhuce, R.id.text_forget, R.id.btn_login,R.id.login_img_wechat,R.id.login_img_qq,R.id.login_xiyi})
     public void onViewClicked(View view) {
         String phone = loginPhone.getText().toString().trim();
         String pass = loginPassword.getText().toString().trim();
@@ -81,6 +86,7 @@ public class LoginActivity extends BasePresenterActivity<LoginPresenter,LoginMod
                     ToastUtils.showToast(LoginActivity.this, getResources().getString(R.string.string_reminder_password_null));
                     return;
                 }
+
                 if (RegexValidateUtil.checkCellphone(phone)) {
                     if(NetUtils.isConnected(LoginActivity.this)){
                         mPresenter.goLogin(phone, MD5Utils.toMD5(pass));
@@ -97,6 +103,9 @@ public class LoginActivity extends BasePresenterActivity<LoginPresenter,LoginMod
                 break;
             case R.id.login_img_qq:
                 ShareUtils.qqWxLogin(LoginActivity.this,2,null);
+                break;
+            case R.id.login_xiyi:
+                UIHelper.showSimpleBack(LoginActivity.this, SimpleBackPage.Change_XieYi);
                 break;
 
             default:

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.primecloud.huafenghuang.R;
@@ -14,7 +15,9 @@ import com.primecloud.huafenghuang.api.FengHuangApi;
 import com.primecloud.huafenghuang.api.HttpCallBack;
 import com.primecloud.huafenghuang.application.MyApplication;
 import com.primecloud.huafenghuang.helper.InputTextHelper;
+import com.primecloud.huafenghuang.helper.UIHelper;
 import com.primecloud.huafenghuang.ui.home.HomeActivity;
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.activity.set.SimpleBackPage;
 import com.primecloud.huafenghuang.utils.DialogUtils;
 import com.primecloud.huafenghuang.utils.MD5Utils;
 import com.primecloud.huafenghuang.utils.NetUtils;
@@ -50,6 +53,8 @@ public class RegisterActivity extends CommonBaseActivity {
     ImageView imgRegisterWechat;
     @BindView(R.id.img_register_qq)
     ImageView imgRegisterQq;
+    @BindView(R.id.register_xiyi)
+    TextView xiyi;
 
 
     private InputTextHelper mInputTextHelper;
@@ -77,7 +82,7 @@ public class RegisterActivity extends CommonBaseActivity {
 
     }
 
-    @OnClick({R.id.btn_register, R.id.cv_password_forget_countdown, R.id.img_register_wechat, R.id.img_register_qq})
+    @OnClick({R.id.btn_register, R.id.cv_password_forget_countdown, R.id.img_register_wechat, R.id.img_register_qq,R.id.register_xiyi})
     public void onViewClicked(View view) {
         String phone = registerPhone.getText().toString().trim();//手机号
         String pass = registerPassword.getText().toString().trim();//密码
@@ -126,6 +131,9 @@ public class RegisterActivity extends CommonBaseActivity {
                 break;
             case R.id.img_register_qq:
                 ShareUtils.qqWxLogin(RegisterActivity.this, 2, null);
+                break;
+            case R.id.register_xiyi:
+                UIHelper.showSimpleBack(RegisterActivity.this, SimpleBackPage.Change_XieYi);
                 break;
             default:
                 break;
