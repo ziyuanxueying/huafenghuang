@@ -85,7 +85,7 @@
         android:layout_alignParentLeft="true"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/space_50"
+        android:layout_marginLeft="@dimen/space_40"
         android:layout_marginRight="@dimen/space_40"
         android:layout_marginTop="@dimen/space_10"
         >
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/space_10"
-            android:textColor="@color/black"
+            android:textColor="@color/textcolor_xiyi"
             android:layout_gravity="center_vertical"
             android:text="@string/string_register_xiyi"
             />
