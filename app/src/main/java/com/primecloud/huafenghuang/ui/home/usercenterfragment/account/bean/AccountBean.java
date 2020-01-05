@@ -112,5 +112,19 @@ public class AccountBean {
         public void setTotalIncome(int totalIncome) {
             this.totalIncome = totalIncome;
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "balance=" + balance +
+                    ", isBindingRealName=" + isBindingRealName +
+                    ", isBindingWechat=" + isBindingWechat +
+                    ", isEnableCatchout=" + isEnableCatchout +
+                    ", isBindingBankCard=" + isBindingBankCard +
+                    ", totalIncome=" + totalIncome +
+                    ", iDCard='" + iDCard + '\'' +
+                    ", realName='" + realName + '\'' +
+                    '}';
+        }
     }
 }

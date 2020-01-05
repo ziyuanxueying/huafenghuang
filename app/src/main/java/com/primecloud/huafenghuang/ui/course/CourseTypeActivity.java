@@ -107,7 +107,6 @@ public class CourseTypeActivity extends BasePresenterActivity<CoursePresenter,Co
 
         stopRefreshLoading();
 
-
     }
 
 

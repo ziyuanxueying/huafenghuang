@@ -78,7 +78,8 @@ public class CourseDetailsActivity extends BasePresenterActivity<CoursePresenter
         chapterId = getIntent().getIntExtra("chapterId", -1);
         courseId = getIntent().getIntExtra("courseId", -1);
         music = getIntent().getBooleanExtra("isMusic", false);
-
+        Log.i("FJ",chapterId+"");
+        Log.i("FJ",courseId+"");
 
         if (chapterId == -1) {
             chapterId = MyApplication.getInstance().getChapterId();
@@ -334,7 +335,8 @@ public class CourseDetailsActivity extends BasePresenterActivity<CoursePresenter
                     if (introduceFragment == null) {
                         introduceFragment = new IntroduceFragment();
                         Bundle bundle = new Bundle();
-                        bundle.putString("courseId", courseId + "");
+                        bundle.putInt("chapterId", chapterId);
+                        bundle.putInt("courseId", courseId);
                         introduceFragment.setArguments(bundle);
                     }
 
@@ -352,6 +354,10 @@ public class CourseDetailsActivity extends BasePresenterActivity<CoursePresenter
                 case 2:
                     if (imageTextFragment == null) {
                         imageTextFragment = new ImageTextFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("chapterId", chapterId);
+                        bundle.putInt("courseId", courseId);
+                        imageTextFragment.setArguments(bundle);
                     }
                     return imageTextFragment;
                 case 3:

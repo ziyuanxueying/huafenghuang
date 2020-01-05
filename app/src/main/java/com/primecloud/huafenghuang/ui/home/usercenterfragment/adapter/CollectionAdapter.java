@@ -2,6 +2,7 @@ package com.primecloud.huafenghuang.ui.home.usercenterfragment.adapter;
 
 import android.app.Activity;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -46,10 +47,19 @@ public class CollectionAdapter extends BaseQuickAdapter<CollectionBean.DataBean.
                     .into(orderNum);
             if (StringUtils.notBlank(item.getTitle())) {
                 title.setText(item.getTitle());
-                number.setText(item.getCourseView() + "人学习");
+                number.setText(item.getCourseView() +mContext.getResources().getString(R.string.play_num));
                 //vip_free	vip免费标志 1.免费
+
                 if (item.getVip_free() == 1) {
-                    label.setText("VIP免费");
+                    label.setTextSize(12);
+                    label.setText(mContext.getResources().getString(R.string.course_free));
+                    label.setTextColor(mContext.getResources().getColor(R.color.tab_checked));
+                    label.setBackground(null);
+                } else {
+                    label.setTextSize(10);
+                    label.setText(mContext.getResources().getString(R.string.course_vip));
+                    label.setTextColor(mContext.getResources().getColor(R.color.white));
+                    label.setBackground(mContext.getResources().getDrawable(R.drawable.shape_pink));
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.primecloud.huafenghuang.ui.home.usercenterfragment.material;
 
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.account.bean.AccountBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.LikeResultBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.MaterialBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.ResourceTag;
@@ -15,6 +16,7 @@ import rx.Observable;
 
 public interface MaterialContract {
     interface View extends BaseView {
+        void showMyAccountData(AccountBean.DataBean accountBean);
 
        void showPicData(List<MaterialBean.DataBean> picDocuments);
 
@@ -30,7 +32,8 @@ public interface MaterialContract {
 
     }
     interface Model extends BaseModel {
-
+        //获取我的账户页首页数据
+        Observable<Response<AccountBean>> getMyAccountFirstPage(String userId);
         /**
          * 获取视频资源接口
          * @param userId
@@ -84,6 +87,8 @@ public interface MaterialContract {
 
     }
     abstract class  Presenter extends BasePresenter<View, Model> {
+
+        abstract void getMyAccountFirstPage(String userId);
 
         abstract void getResourceVideo(String userId, int pageNumber, int pageSize, int type);
 

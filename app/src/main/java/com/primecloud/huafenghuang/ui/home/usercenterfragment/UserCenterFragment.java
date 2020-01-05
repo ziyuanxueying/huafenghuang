@@ -3,6 +3,7 @@ package com.primecloud.huafenghuang.ui.home.usercenterfragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,9 +70,9 @@ public class UserCenterFragment extends BasePresenterFragment implements InfoInt
     @BindView(R.id.tv_zhanghu)
     TextView tvZhanghu;
     @BindView(R.id.tv_yaoqing)
-    TextView tvYaoqing;
+    LinearLayout tvYaoqing;
     @BindView(R.id.line_vip)
-    LinearLayout lineVip;
+    ImageView lineVip;
     @BindView(R.id.line_yaoqingma)
     LinearLayout lineYaoqing;
     @BindView(R.id.img_vip)
@@ -212,11 +213,14 @@ public class UserCenterFragment extends BasePresenterFragment implements InfoInt
 
     @Override
     public void changeInfo(String flag) {
+        Log.i("FJ", flag);
         if (flag.equals("2")) {
+            Log.i("FJ",MyApplication.getInstance().getUserInfo().getId());
             if (MyApplication.getInstance().getUserInfo() != null && StringUtils.notBlank(MyApplication.getInstance().getUserInfo().getId())) {
                 FengHuangApi.getUserInformation(MyApplication.getInstance().getUserInfo().getId(), new HttpCallBack<BizResult>() {
                     @Override
                     public void onSuccess(String data, BizResult body) {
+                        Log.i("FJ",body.toString());
                         UserInfo Information = JSON.parseObject(body.getData(), UserInfo.class);
                         MyApplication.doLogin(getActivity(), Information);
                         getUserInfo();

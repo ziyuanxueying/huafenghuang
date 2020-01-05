@@ -181,4 +181,5 @@
     </LinearLayout>
     <View
         style="@style/VerticalLine10Style"/>
+
 </LinearLayout>

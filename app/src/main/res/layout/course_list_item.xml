@@ -27,8 +27,20 @@
                 android:id="@+id/course_list_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor_one"
+                android:textSize="15sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="青少年心智课程"
+                />
+            <TextView
+                android:id="@+id/course_list_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
                 android:textColor="@color/textcolor_one"
+                android:layout_below="@id/course_list_title"
                 android:textSize="15sp"
                 android:ellipsize="end"
                 android:maxLines="1"
@@ -43,8 +55,9 @@
                 android:drawablePadding="5dp"
                 android:textColor="@color/captcah_text_color"
                 android:textSize="12sp"
-                android:layout_below="@id/course_list_title"
-                android:text="2.7万人学习"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 />
 
             <TextView
@@ -54,7 +67,7 @@
                 android:layout_alignParentBottom="true"
                 android:padding="4dp"
                 android:text="免费课程"
-                android:textColor="#EA5513"
+                android:textColor="@color/white"
                 android:background="@drawable/shape_pink"
                 android:textSize="12sp" />
         </RelativeLayout>

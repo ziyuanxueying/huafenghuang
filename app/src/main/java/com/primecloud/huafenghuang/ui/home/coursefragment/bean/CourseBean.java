@@ -66,6 +66,11 @@ public class CourseBean {
             private String state;//状态，1.上架，2.下架
             private String updatedAt;//修改时间
 
+            private String courseView;//修改时间
+            private String freeFlag;// 1 免费
+            private String coursePic;//修改时间
+            private String summary;
+
 
             public String getCreatedAt() {
                 return createdAt;
@@ -131,6 +136,38 @@ public class CourseBean {
                 this.updatedAt = updatedAt;
             }
 
+            public String getCourseView() {
+                return courseView;
+            }
+
+            public void setCourseView(String courseView) {
+                this.courseView = courseView;
+            }
+
+            public String getFreeFlag() {
+                return freeFlag;
+            }
+
+            public void setFreeFlag(String freeFlag) {
+                this.freeFlag = freeFlag;
+            }
+
+            public String getCoursePic() {
+                return coursePic;
+            }
+
+            public void setCoursePic(String coursePic) {
+                this.coursePic = coursePic;
+            }
+
+            public String getSummary() {
+                return summary;
+            }
+
+            public void setSummary(String summary) {
+                this.summary = summary;
+            }
+
             @Override
             public String toString() {
                 return "SecTagsBean{" +
@@ -142,6 +179,10 @@ public class CourseBean {
                         ", sort='" + sort + '\'' +
                         ", state='" + state + '\'' +
                         ", updatedAt='" + updatedAt + '\'' +
+                        ", courseView='" + courseView + '\'' +
+                        ", freeFlag='" + freeFlag + '\'' +
+                        ", coursePic='" + coursePic + '\'' +
+                        ", summary='" + summary + '\'' +
                         '}';
             }
         }
@@ -161,8 +202,10 @@ public class CourseBean {
             private String created_at;//创建时间
             private String video_fileID;//视频fileID（同resource表fileID）
             private String free;//免费标志，区分与vip免费：1免费
+            private String freeFlag;//免费标志，区分与vip免费：1免费
             private String chapterId;//小节ID
             private String chapter_title;//小节标题
+            private String summary;//一句话概括
 
 
             public String getChapterId() {
@@ -277,6 +320,21 @@ public class CourseBean {
                 this.video_fileID = video_fileID;
             }
 
+            public String getFreeFlag() {
+                return freeFlag;
+            }
+
+            public void setFreeFlag(String freeFlag) {
+                this.freeFlag = freeFlag;
+            }
+
+            public String getSummary() {
+                return summary;
+            }
+
+            public void setSummary(String summary) {
+                this.summary = summary;
+            }
 
             @Override
             public String toString() {
@@ -293,8 +351,10 @@ public class CourseBean {
                         ", created_at='" + created_at + '\'' +
                         ", video_fileID='" + video_fileID + '\'' +
                         ", free='" + free + '\'' +
+                        ", freeFlag='" + freeFlag + '\'' +
                         ", chapterId='" + chapterId + '\'' +
                         ", chapter_title='" + chapter_title + '\'' +
+                        ", summary='" + summary + '\'' +
                         '}';
             }
         }

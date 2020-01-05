@@ -26,6 +26,9 @@ import java.util.List;
 
 import butterknife.BindView;
 
+/**
+ * 首页-->带二级tab的页面
+ */
 public class CourseFragment extends BasePresenterFragment<MainCoursePresenter,MainCourseModel> implements MainCourseContract.View, CourseAdapter.RequestLoadMoreListener,CourseAdapter.OnItemClickListener,SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.fragment_course_list_recycler)
@@ -52,7 +55,6 @@ public class CourseFragment extends BasePresenterFragment<MainCoursePresenter,Ma
         list = new ArrayList<>();
 
         secTagId = getArguments().getString("secTagId");
-
 
         initAdapter();
         swipeRefresh.setRefreshing(true);

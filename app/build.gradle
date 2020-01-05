@@ -8,10 +8,13 @@ def releaseTime() {
 
 // 正式环境
 def API_RELEASE_HOST = "\"http://api.huaxiachangxiang.com/\""
+//def API_RELEASE_HOST = "\"http://api.test.huaxiachangxiang.com/\""
+
 
 // 测试环境
 //def API_DEBUG_HOST = "\"http://api.huafenghuang.issac.top/\""
-def API_DEBUG_HOST = "\"http://test.huaxiachangxiang.com/\""
+//def API_DEBUG_HOST = "\"http://api.test.huaxiachangxiang.com/\""
+def API_DEBUG_HOST = "\"http://api.huaxiachangxiang.com/\""
 
 // 图片地址
 def API_PIC_HOST = "\"\""
@@ -22,8 +25,8 @@ android {
         applicationId "com.primecloud.huafenghuang"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 4
-        versionName "1.1.4"
+        versionCode 5
+        versionName "2.1.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -155,6 +158,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation 'com.contrarywind:Android-PickerView:3.2.5'
     implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.google.zxing:core:3.3.0'
     implementation project(':jiaozivideoplayer')
     implementation project(':primecloudpaysdk')
     implementation files('libs/xUtils-2.6.14.jar')

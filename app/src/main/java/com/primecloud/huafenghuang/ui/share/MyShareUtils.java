@@ -1,5 +1,6 @@
 package com.primecloud.huafenghuang.ui.share;
 
+import android.os.Environment;
 import android.text.TextUtils;
 
 import com.primecloud.library.baselibrary.log.XLog;
@@ -16,33 +17,35 @@ public class MyShareUtils {
 
     /**
      * 分享
+     *
      * @param shareBean
      */
-    public static void share(ShareBean shareBean){
-        if(shareBean == null)
+    public static void share(ShareBean shareBean) {
+        if (shareBean == null)
             throw new NullPointerException("传入的shareBean不能为空");
 
         Platform.ShareParams sp = new Platform.ShareParams();
         // text是分享文本，所有平台都需要这个字段
 
 
-
         //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
         String imagePath = shareBean.getImagePath();
-        XLog.i("imagePath:"+imagePath);
         if (!TextUtils.isEmpty(imagePath)) {//imagePath banner分享部分有缩略图
+            XLog.i("imagePath:" + shareBean.toString());
 
-            if(imagePath.startsWith("http://") || imagePath.startsWith("https://")){
-                if(shareBean.getsType() == 1){
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                if (shareBean.getsType() == 1) {
                     sp.setImagePath(imagePath);
-                }else {
+                } else {
                     sp.setText(shareBean.getText());
                     sp.setImageUrl(imagePath);
                     // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
                     sp.setTitle(shareBean.getTitle());
                 }
-            }else{
-                throw new ClassFormatError("传入的imagePath不是一个完整的路径");
+            } else {
+//                throw new ClassFormatError("传入的imagePath不是一个完整的路径");
+                imagePath = Environment.getExternalStorageDirectory() + imagePath;
+                sp.setImagePath(imagePath);
             }
         }
 
@@ -60,7 +63,7 @@ public class MyShareUtils {
         sp.setComment(shareBean.getComment());
         Platform platform = ShareSDK.getPlatform(shareBean.getPlatName());
         PlatformActionListener paListener = shareBean.getListener();
-        if(paListener != null){
+        if (paListener != null) {
             platform.setPlatformActionListener(paListener); // 设置分享事件回调
         }
 

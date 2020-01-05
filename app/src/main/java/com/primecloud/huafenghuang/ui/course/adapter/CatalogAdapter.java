@@ -38,7 +38,7 @@ public class CatalogAdapter  extends BaseQuickAdapter<CourseDetailBean.DataBean.
             helper.setText(R.id.catalog_recycler_item_time,item.getAudio_timeLen());
         }
 
-        helper.setText(R.id.catalog_recycler_item_study,item.getCourseView()+mContext.getResources().getString(R.string.study_num));
+        helper.setText(R.id.catalog_recycler_item_study,item.getCourseView()+mContext.getResources().getString(R.string.play_num));
 
         TextView free = helper.getView(R.id.catalog_recycler_item_free);
         ImageView lock = helper.getView(R.id.catalog_recycler_item_lock);

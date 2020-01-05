@@ -2,6 +2,7 @@ package com.primecloud.huafenghuang.ui.home.usercenterfragment.material;
 
 
 import com.primecloud.huafenghuang.api.NetWorks;
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.account.bean.AccountBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.LikeResultBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.MaterialBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.ResourceTag;
@@ -11,6 +12,15 @@ import retrofit2.Response;
 import rx.Observable;
 
 public class MaterialModel implements MaterialContract.Model {
+    @Override
+    public Observable<Response<AccountBean>> getMyAccountFirstPage(String userId) {
+        return NetWorks.getInstance()
+                .getApi()
+                .getMyAccountFirstPage(userId)
+                .compose(RxSchedulerHelper.applySchedulers());
+    }
+
+
     @Override
     public Observable<Response<MaterialBean>> getResourceVideo(String userId, int pageNumber, int pageSize, int tagId) {
         return NetWorks.getInstance()

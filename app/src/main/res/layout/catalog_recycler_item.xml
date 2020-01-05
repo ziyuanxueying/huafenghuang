@@ -62,7 +62,6 @@
                     android:textColor="@color/captcah_text_color"
                     android:drawableLeft="@mipmap/renshu"
                     android:drawablePadding="8dp"
-                    android:text="2.4万人学习"
                     />
             </LinearLayout>
         </LinearLayout>

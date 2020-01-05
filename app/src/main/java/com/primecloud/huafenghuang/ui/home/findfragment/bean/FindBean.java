@@ -1,11 +1,13 @@
 package com.primecloud.huafenghuang.ui.home.findfragment.bean;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.primecloud.huafenghuang.ui.home.coursefragment.bean.CourseBean;
 
 public class FindBean extends CourseBean implements MultiItemEntity {
 
     public static final int ITEM_HEAD = 1;//头部布局（轮播，分类）
     public static final int ITEM_TYPE = 2;//类型（热门推荐等）
+    public static final int ITEM_LIST = 3;//类型（热门推荐等）
     public static final int ITEM_COURSE = 0;//课程item
     private int itemType = 0;// 默认是课程
 
@@ -58,6 +60,7 @@ public class FindBean extends CourseBean implements MultiItemEntity {
     private int id;
     private int courseId;
     private int free = 1;
+    private String summary;//一句话概括
 
     public int getFree() {
         return free;
@@ -123,6 +126,14 @@ public class FindBean extends CourseBean implements MultiItemEntity {
         this.courseId = courseId;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     @Override
     public String toString() {
         return "FindBean{" +
@@ -137,6 +148,7 @@ public class FindBean extends CourseBean implements MultiItemEntity {
                 ", id=" + id +
                 ", courseId=" + courseId +
                 ", vip_free=" + free +
+                ", summary=" + summary +
                 '}';
     }
 }

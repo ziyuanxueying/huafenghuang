@@ -14,6 +14,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.primecloud.huafenghuang.R;
 import com.primecloud.huafenghuang.ui.course.CourseDetailsActivity;
 import com.primecloud.huafenghuang.ui.course.CourseListActivity;
+import com.primecloud.huafenghuang.ui.course.CourseTypeListActivity;
 import com.primecloud.huafenghuang.ui.home.findfragment.WebViewActivity;
 import com.primecloud.huafenghuang.ui.home.findfragment.bean.BannerBean;
 import com.primecloud.huafenghuang.ui.home.findfragment.bean.ClassifyBean;
@@ -47,6 +48,7 @@ public class FindAdapter extends BaseMultiItemQuickAdapter<FindBean, BaseViewHol
         addItemType(FindBean.ITEM_HEAD, R.layout.item_find_head);
         addItemType(FindBean.ITEM_TYPE, R.layout.item_find_type_head);
         addItemType(FindBean.ITEM_COURSE, R.layout.item_find_course);
+        addItemType(FindBean.ITEM_LIST, R.layout.item_find_course);
 
         banners = new ArrayList<>();
         bannerPics = new ArrayList<>();
@@ -69,16 +71,16 @@ public class FindAdapter extends BaseMultiItemQuickAdapter<FindBean, BaseViewHol
                         BannerBean bannerBean = banners.get(position);
                         int type = bannerBean.getType();
                         Intent intent = null;
-                        if(type == 1){
+                        if (type == 1) {
                             intent = new Intent(mContext, WebViewActivity.class);
                             intent.putExtra("url", bannerBean.getUrl());
                             intent.putExtra("title", bannerBean.getTitle());
-                        }else if(type == 2){
+                        } else if (type == 2) {
                             intent = new Intent(mContext, CourseDetailsActivity.class);
                             intent.putExtra("chapterId", bannerBean.getCourseChapterId());
                             intent.putExtra("courseId", bannerBean.getCourseId());
                         }
-                        if(intent != null){
+                        if (intent != null) {
                             mContext.startActivity(intent);
                         }
 
@@ -89,9 +91,9 @@ public class FindAdapter extends BaseMultiItemQuickAdapter<FindBean, BaseViewHol
                 RecyclerView recyclerView = helper.getView(R.id.item_head_recyclerview);
                 recyclerView.setLayoutManager(new GridLayoutManager(mContext, 5, LinearLayoutManager.VERTICAL, false));
 
-                if(isMessage){
+                if (isMessage) {
                     helper.setImageResource(R.id.item_head_message, R.mipmap.ic_new1);
-                }else{
+                } else {
                     helper.setImageResource(R.id.item_head_message, R.mipmap.ic_new);
                 }
 
@@ -109,25 +111,50 @@ public class FindAdapter extends BaseMultiItemQuickAdapter<FindBean, BaseViewHol
             case FindBean.ITEM_TYPE:// 类型
                 helper.setText(R.id.item_type_name, item.getTypeName());
                 helper.addOnClickListener(R.id.item_type_more);
-
                 break;
             case FindBean.ITEM_COURSE:// 课程
                 int free = item.getFree();
-                TextView vip = helper.getView(R.id.item_course_vip);
-                if(free == 1){
+                TextView label = helper.getView(R.id.item_course_vip);
 
-                    vip.setVisibility(View.GONE);
-                }else{
-                    vip.setVisibility(View.VISIBLE);
-                    vip.setTextSize(10);
-                    vip.setText(mContext.getResources().getString(R.string.course_vip));
-                    vip.setBackground(mContext.getResources().getDrawable(R.drawable.shape_pink));
+                if (free == 1) {
+                    label.setTextSize(12);
+                    label.setText(mContext.getResources().getString(R.string.course_free));
+                    label.setTextColor(mContext.getResources().getColor(R.color.tab_checked));
+                    label.setBackground(null);
+                } else {
+                    label.setTextSize(10);
+                    label.setText(mContext.getResources().getString(R.string.course_vip));
+                    label.setTextColor(mContext.getResources().getColor(R.color.white));
+                    label.setBackground(mContext.getResources().getDrawable(R.drawable.shape_pink));
                 }
 
                 helper.setText(R.id.item_course_title, item.getChapter_title());
-                helper.setText(R.id.item_course_course, item.getCourseView()+"人学习");
-                RoundedImageView riv = (RoundedImageView)helper.getView(R.id.item_course_iv);
+                helper.setText(R.id.item_course_context, item.getSummary());
+                helper.setText(R.id.item_course_course, item.getCourseView() + mContext.getResources().getString(R.string.play_num));
+                RoundedImageView riv = helper.getView(R.id.item_course_iv);
                 GlideImageLoader.getInstance().displayImage(mContext, item.getCoursePic(), riv);
+                break;
+            case FindBean.ITEM_LIST:// 课程
+                int free2 = item.getFree();
+                TextView label2 = helper.getView(R.id.item_course_vip);
+
+                if (free2 == 1) {
+                    label2.setTextSize(12);
+                    label2.setText(mContext.getResources().getString(R.string.course_free));
+                    label2.setTextColor(mContext.getResources().getColor(R.color.tab_checked));
+                    label2.setBackground(null);
+                } else {
+                    label2.setTextSize(10);
+                    label2.setText(mContext.getResources().getString(R.string.course_vip));
+                    label2.setTextColor(mContext.getResources().getColor(R.color.white));
+                    label2.setBackground(mContext.getResources().getDrawable(R.drawable.shape_pink));
+                }
+
+                helper.setText(R.id.item_course_title, item.getChapter_title());
+                helper.setText(R.id.item_course_context, item.getSummary());
+                helper.setText(R.id.item_course_course, item.getCourseView() + mContext.getResources().getString(R.string.play_num));
+                RoundedImageView riv2 = helper.getView(R.id.item_course_iv);
+                GlideImageLoader.getInstance().displayImage(mContext, item.getCoursePic(), riv2);
                 break;
 
         }
@@ -152,22 +179,29 @@ public class FindAdapter extends BaseMultiItemQuickAdapter<FindBean, BaseViewHol
 
     }
 
-
+    // 头部五个按钮的点击
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        Intent intent = new Intent(mContext, CourseListActivity.class);
-        intent.putExtra("parentId",classifyBeans.get(position).getParentId()+"");
-        intent.putExtra("name",classifyBeans.get(position).getName());
-        mContext.startActivity(intent);
+        if (position == 0) {
+            Intent intent = new Intent(mContext, CourseListActivity.class);
+            intent.putExtra("parentId", classifyBeans.get(position).getParentId() + "");
+            intent.putExtra("name", classifyBeans.get(position).getName());
+            mContext.startActivity(intent);
+        } else {
+            Intent intent = new Intent(mContext, CourseTypeListActivity.class);
+            intent.putExtra("parentId", classifyBeans.get(position).getParentId());
+            intent.putExtra("name", classifyBeans.get(position).getName());
+            mContext.startActivity(intent);
+        }
     }
 
     // 设置轮播图数据
-    public void setBanners(List<BannerBean> banners){
-        if(banners != null){
+    public void setBanners(List<BannerBean> banners) {
+        if (banners != null) {
             this.banners.clear();
             this.banners.addAll(banners);
             bannerPics.clear();
-            for (BannerBean bannerBean: banners){
+            for (BannerBean bannerBean : banners) {
                 bannerPics.add(bannerBean.getPath());
             }
         }
@@ -175,9 +209,9 @@ public class FindAdapter extends BaseMultiItemQuickAdapter<FindBean, BaseViewHol
 
 
     // 是否有未读消息
-    public void setMessageNotify(boolean messageNotify){
+    public void setMessageNotify(boolean messageNotify) {
 
-        if(messageNotify == isMessage){
+        if (messageNotify == isMessage) {
             return;
         }
 

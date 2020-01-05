@@ -65,8 +65,8 @@
     <string name="text_yaoqing">邀请</string>
     <string name="text_yaoqingma">我的邀请码</string>
     <string name="text_vip">成为VIP，课程全年免费听</string>
-    <string name="text_sucai">每日素材</string>
-    <string name="text_kecheng">每日课程</string>
+    <string name="text_sucai">素材转发</string>
+    <string name="text_activity">精彩活动</string>
     <string name="text_dingdan">我的订单</string>
     <string name="text_shouchang">我的收藏</string>
     <string name="text_fankui">建议反馈</string>
@@ -146,8 +146,7 @@
     <string name="text_member_tuandui">团队人数：</string>
     <string name="text_member_yigou">已购VIP数：</string>
     <string name="app_exit_hint">再按一次退出登录</string>
-    <string name="loading_user_info">正在加载用户信息...</string>
-    <string name="text_jiechu"></string>
+    <string name="loading_user_info">正在加载用户信息&#8230;</string>
     <string name="text_senfen_daiyanren">推广代言人</string>
     <string name="text_senfen_zhuce">注册用户</string>
     <string name="text_senfen_hehuoren">合伙人</string>
@@ -159,6 +158,9 @@
     <string name="portrait_camera">从手机相册选择</string>
 
     <!-- 首页-->
+    <string name="home_home">首页</string>
+    <string name="home_course">课程</string>
+    <string name="home_me">我的</string>
     <string name="hot_video">热门视频</string>
     <string name="view_more">查看更多</string>
     <string name="latest_works">最新作品</string>
@@ -197,6 +199,7 @@
     <string name="pay_apple">苹果支付</string>
     <string name="vip_member">VIP会员权益</string>
     <string name="equity">1、开通vip享受所有课程免费观看；\n2、每个账户每月累计可观看1000+视频；\n3、具体规则请查看常见问题说明。</string>
+    <string name="course_vip">VIP免费</string>
     <string name="course_free">免费课程</string>
     <string name="course_hot">热门推荐</string>
     <string name="cut_video">切换视频</string>
@@ -211,7 +214,6 @@
     <string name="current_balance">当前余额</string>
     <string name="open_vip">开通VIP</string>
     <string name="all">全部</string>
-    <string name="course_vip">VIP免费</string>
     <string name="all_comment">全部评论</string>
     <string name="reply_count">条回复</string>
     <string name="apply_success">恭喜您报名成功！</string>
@@ -222,7 +224,7 @@
     <string name="video_open_toast">本节无音/视频</string>
     <string name="video_open_buy_toast">购买后才能观看</string>
     <string name="activity_end">活动已经结束</string>
-    <string name="study_num">人学习</string>
+    <string name="play_num">&#160;播放量</string>
     <string name="success_openvip">开通VIP成功</string>
     <string name="success_course">购买成功</string>
     <string name="no_data">暂无内容</string>
@@ -239,5 +241,6 @@
     <string name="text_shre_error">授权失败</string>
     <string name="text_shre_success">授权成功</string>
 
-
+    <string name="poster_learn">正在华凤凰APP学习</string>
+    <string name="poster_check">识别二维码学免费好课程吧</string>
 </resources>

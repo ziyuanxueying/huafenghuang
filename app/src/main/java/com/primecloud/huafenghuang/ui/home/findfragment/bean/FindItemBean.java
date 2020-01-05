@@ -32,6 +32,11 @@ public class FindItemBean {
     public static class DataBean {
         private List<FindBean> hot;
         private List<FindBean> free;
+        private List<FindBean> newSay;
+        private List<FindBean> self;
+        private List<FindBean> family;
+        private List<FindBean> weekNew;
+        private List<FindBean> work;
         private List<BannerBean> banner;//轮播图
 
         public List<BannerBean> getBanner() {
@@ -58,11 +63,56 @@ public class FindItemBean {
             this.free = free;
         }
 
+        public List<FindBean> getNewSay() {
+            return newSay;
+        }
+
+        public void setNewSay(List<FindBean> newSay) {
+            this.newSay = newSay;
+        }
+
+        public List<FindBean> getSelf() {
+            return self;
+        }
+
+        public void setSelf(List<FindBean> self) {
+            this.self = self;
+        }
+
+        public List<FindBean> getFamily() {
+            return family;
+        }
+
+        public void setFamily(List<FindBean> family) {
+            this.family = family;
+        }
+
+        public List<FindBean> getWeekNew() {
+            return weekNew;
+        }
+
+        public void setWeekNew(List<FindBean> weekNew) {
+            this.weekNew = weekNew;
+        }
+
+        public List<FindBean> getWork() {
+            return work;
+        }
+
+        public void setWeek(List<FindBean> week) {
+            this.work = week;
+        }
+
         @Override
         public String toString() {
             return "DataBean{" +
                     "hot=" + hot +
                     ", free=" + free +
+                    ", newSay=" + newSay +
+                    ", self=" + self +
+                    ", family=" + family +
+                    ", weekNew=" + weekNew +
+                    ", work=" + work +
                     ", banner=" + banner +
                     '}';
         }

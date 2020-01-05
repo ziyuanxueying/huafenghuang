@@ -169,7 +169,6 @@ public class CommentView extends View implements View.OnClickListener, CommentAd
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         if (!issend) {
-
                             if (StringUtils.notBlank(edit.getText().toString())) {
                                 if (MyApplication.getInstance().getUserInfo() != null && StringUtils.notBlank(MyApplication.getInstance().getUserInfo().getId())) {
                                     issend = true;

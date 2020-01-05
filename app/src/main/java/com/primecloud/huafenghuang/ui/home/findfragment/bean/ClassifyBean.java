@@ -17,7 +17,7 @@ public class ClassifyBean {
 
         classifyList.add(new ClassifyBean(R.mipmap.renwen, "事业", 2));
 
-        classifyList.add(new ClassifyBean(R.mipmap.shangcheng, "成长商城", 4));
+        classifyList.add(new ClassifyBean(R.mipmap.more, "其他", 4));
     }
     private int resourceId;
     private String name;

@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,8 +23,11 @@ import com.primecloud.huafenghuang.api.BizResult;
 import com.primecloud.huafenghuang.api.FengHuangApi;
 import com.primecloud.huafenghuang.api.HttpCallBack;
 import com.primecloud.huafenghuang.application.MyApplication;
+import com.primecloud.huafenghuang.ui.course.bean.CommentBean;
 import com.primecloud.huafenghuang.ui.course.bean.CourseDetailBean;
 import com.primecloud.huafenghuang.ui.course.bean.CourseDetailsEvent;
+import com.primecloud.huafenghuang.ui.course.bean.OfflineCourseDetailBean;
+import com.primecloud.huafenghuang.ui.home.coursefragment.bean.CourseBean;
 import com.primecloud.huafenghuang.ui.user.LoginActivity;
 import com.primecloud.huafenghuang.utils.StringUtils;
 import com.primecloud.huafenghuang.utils.ToastUtils;
@@ -39,7 +44,7 @@ import java.net.URL;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class IntroduceFragment extends BasePresenterFragment implements View.OnClickListener {
+public class IntroduceFragment extends BasePresenterFragment<CoursePresenter, CourseModel> implements CourseContract.View, View.OnClickListener {
 
 
     @BindView(R.id.introduce_comment_collect)
@@ -59,7 +64,12 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
     private int collectCount = 0;
     private int parseCount = 0;
     private int messageCount = 0;
-    private String courseId;
+    private int courseId;
+    private int chapterId;
+
+    @BindView(R.id.btn_vip)
+    ImageView btnVip;
+    private CourseDetailBean.DataBean dataBean;
 
     @Override
     public View setContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,11 +78,8 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
 
     @Override
     public void initData() {
-
-
-        courseId = getArguments().getString("courseId");
-
-
+        chapterId = getArguments().getInt("chapterId", -1);
+        courseId = getArguments().getInt("courseId", -1);
     }
 
 
@@ -90,7 +97,7 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
 
             if (StringUtils.notBlank(bean.getDataBean().getCourseIntro_url())) {
 
-                WebViewUtils.WebViewLoad(webView,bean.getDataBean().getCourseIntro_url());
+                WebViewUtils.WebViewLoad(webView, bean.getDataBean().getCourseIntro_url());
             }
 
             if (StringUtils.notBlank(bean.getDataBean().getCommentNum())) {
@@ -128,7 +135,14 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
 
         setCollect(false);
         setParse(false);
+        if (chapterId != -1 && courseId != -1) {
+            if (MyApplication.getInstance().getUserInfo() != null && StringUtils.notBlank(MyApplication.getInstance().getUserInfo().getId())) {
+                mPresenter.courseDetailPresenter(courseId, "1", "1", chapterId, MyApplication.getInstance().getUserInfo().getId());
+            } else {
+                mPresenter.courseDetailPresenter(courseId, "1", "1", chapterId, null);
+            }
 
+        }
     }
 
 
@@ -139,9 +153,12 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
 
 
     @Override
-    @OnClick({R.id.introduce_comment_message, R.id.introduce_comment_collect, R.id.introduce_comment_parse, R.id.introduce_comment_edit})
+    @OnClick({R.id.btn_vip, R.id.introduce_comment_message, R.id.introduce_comment_collect, R.id.introduce_comment_parse, R.id.introduce_comment_edit})
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_vip:
+                buyVip();
+                break;
             case R.id.introduce_comment_edit:
             case R.id.introduce_comment_message:
                 CourseDetailsEvent courseDetailsEvent = new CourseDetailsEvent();
@@ -150,7 +167,7 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
                 break;
             case R.id.introduce_comment_collect:
                 if (MyApplication.getInstance().getUserInfo() != null && StringUtils.notBlank(MyApplication.getInstance().getUserInfo().getId())) {
-                    collect(courseId, MyApplication.getInstance().getUserInfo().getId());
+                    collect(courseId + "", MyApplication.getInstance().getUserInfo().getId());
                 } else {
                     startActivity(new Intent(getActivity(), LoginActivity.class));
 
@@ -159,7 +176,7 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
                 break;
             case R.id.introduce_comment_parse:
                 if (MyApplication.getInstance().getUserInfo() != null && StringUtils.notBlank(MyApplication.getInstance().getUserInfo().getId())) {
-                    parse(courseId, MyApplication.getInstance().getUserInfo().getId());
+                    parse(courseId + "", MyApplication.getInstance().getUserInfo().getId());
                 } else {
                     startActivity(new Intent(getActivity(), LoginActivity.class));
                 }
@@ -202,6 +219,7 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
 
             @Override
             public void onFailure(String data, String errorMsg) {
+                Log.i("FJ",data);
                 CommentView.getComment(getActivity()).issend = false;
             }
         });
@@ -301,10 +319,49 @@ public class IntroduceFragment extends BasePresenterFragment implements View.OnC
     }
 
 
+    @Override
+    public void listCourseByTypeView(CourseBean dataBean) {
+
+    }
+
+    @Override
+    public void courseDetailView(CourseDetailBean courseDetailBean) {
+        if (courseDetailBean != null && courseDetailBean.getDataBean() != null) {
+            dataBean = courseDetailBean.getDataBean();
+            if (dataBean != null) {
+                if (dataBean.getCurrCourseChapter() != null && StringUtils.notBlank(dataBean.getCurrCourseChapter().getFree()) && dataBean.getCurrCourseChapter().getFree().equals("1")) {
+                    btnVip.setVisibility(View.GONE);
+                } else {
+                    if (dataBean.getCurrUser() != null&& dataBean.getCurrUser().getIsVip().equals("1")) {
+                        btnVip.setVisibility(View.GONE);
+                    } else {
+                        btnVip.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        }
+
+    }
+
+    @Override
+    public void commentView(CommentBean commentBean) {
+
+    }
+
+    @Override
+    public void offlineDetailsView(OfflineCourseDetailBean courseDetailBean) {
+
+    }
 
 
-
-
-
-
+    /**
+     * 购买Vip
+     */
+    public void buyVip() {
+        if (Utils.isLogin(getActivity())) {
+            Intent intentvip = new Intent(getActivity(), DredgeVIPActivity.class);
+            intentvip.putExtra("type", 1);
+            getActivity().startActivity(intentvip);
+        }
+    }
 }

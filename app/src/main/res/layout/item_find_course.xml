@@ -1,65 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_course_rootview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/item_course_rootview"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="12dp">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/item_course_iv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="145dp"
+        android:layout_height="85dp"
         android:scaleType="fitXY"
-        app:riv_corner_radius="4dp"
-        app:riv_oval="false"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintDimensionRatio="w, 94:168"
-        />
-
+        app:riv_corner_radius="6dp"/>
 
 
     <TextView
         android:id="@+id/item_course_title"
         style="@style/TextView_15sp_33color"
-        android:textSize="15sp"
         android:text="青少年心智课程1节"
-        android:layout_marginTop="@dimen/dp_10"
-
-
-        app:layout_constraintLeft_toLeftOf="@id/item_course_iv"
-        app:layout_constraintTop_toBottomOf="@id/item_course_iv"
-        />
+        android:textSize="15sp"
+        app:layout_constraintLeft_toRightOf="@+id/item_course_iv"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"/>
 
     <TextView
-        android:id="@+id/item_course_course"
+        android:id="@+id/item_course_context"
         style="@style/TextView_15sp_33color"
-        android:textSize="@dimen/sp_12"
-        android:textColor="@color/textcolor_login"
-        android:layout_marginTop="@dimen/dp_10"
-        android:drawableLeft="@mipmap/renshu"
-        android:drawableStart="@mipmap/renshu"
-        android:drawablePadding="6dp"
-
-        app:layout_constraintLeft_toLeftOf="@id/item_course_iv"
-        app:layout_constraintTop_toBottomOf="@id/item_course_title"
-
-         />
+        android:layout_marginTop="4dp"
+        android:text="概括本节内容的一句话"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="@+id/item_course_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_course_title" />
 
     <TextView
         android:id="@+id/item_course_vip"
         style="@style/TextView_15sp_33color"
-        android:textSize="10sp"
-        android:textColor="#EA5513"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginBottom="15dp"
-        android:text="VIP免费"
         android:background="@drawable/shape_pink"
         android:padding="4dp"
-        app:layout_constraintLeft_toLeftOf="@id/item_course_iv"
-        app:layout_constraintTop_toBottomOf="@id/item_course_course"
+        android:text="VIP免费"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/item_course_context"
+        app:layout_constraintTop_toBottomOf="@+id/item_course_context"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-        />
+    <TextView
+        android:id="@+id/item_course_course"
+        style="@style/TextView_15sp_33color"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:drawableLeft="@mipmap/renshu"
+        android:drawablePadding="6dp"
+        android:drawableStart="@mipmap/renshu"
+        android:textColor="@color/textcolor_login"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

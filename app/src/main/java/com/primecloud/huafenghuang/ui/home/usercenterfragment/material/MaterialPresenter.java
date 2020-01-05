@@ -1,6 +1,7 @@
 package com.primecloud.huafenghuang.ui.home.usercenterfragment.material;
 
 import com.primecloud.huafenghuang.base.BaseSubscrible;
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.account.bean.AccountBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.LikeResultBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.MaterialBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.ResourceTag;
@@ -8,6 +9,25 @@ import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.ResourceTag;
 import retrofit2.Response;
 
 public class MaterialPresenter extends MaterialContract.Presenter {
+    @Override
+    public void getMyAccountFirstPage(String userId) {
+        mRxManager.add(mModel.getMyAccountFirstPage(userId).subscribe(new BaseSubscrible<Response<AccountBean>>() {
+            @Override
+            public void onSuccess(Response<AccountBean> accountBeanResponse) {
+                mView.showMyAccountData(accountBeanResponse.body().getData());
+            }
+
+            @Override
+            public void onFail(String errorMsg) {
+                mView.onRequestError(errorMsg);
+            }
+
+            @Override
+            public void onCompleted() {
+            }
+        }));
+    }
+
     @Override
     void getResourceVideo(String userId, int pageNumber, int pageSize, int tagId) {
         mRxManager.add(mModel.getResourceVideo(userId, pageNumber, pageSize, tagId).subscribe(new BaseSubscrible<Response<MaterialBean>>() {

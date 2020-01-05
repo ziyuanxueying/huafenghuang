@@ -54,7 +54,7 @@ public class ShareUtils {
         }
         shareBean.setListener(platformActionListener);
         shareBean.setShareType(shareType);
-
+        Log.i("imagePath:" , shareBean.toString());
         dialog = DialogUtils.shareDialogWX(mContext, new View.OnClickListener() {
             @Override
             public void onClick(View v) {

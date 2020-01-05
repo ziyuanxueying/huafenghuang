@@ -126,7 +126,6 @@
                 android:textColor="@color/captcah_text_color"
                 android:textSize="12sp"
                 android:layout_below="@id/time_title"
-                android:text="2.7万人学习"
                 />
 
             <TextView
@@ -136,7 +135,7 @@
                 android:layout_alignParentBottom="true"
                 android:padding="4dp"
                 android:text="免费课程"
-                android:textColor="@color/indicator_color_red"
+                android:textColor="@color/white"
                 android:background="@drawable/shape_pink"
                 android:textSize="12sp" />
         </RelativeLayout>

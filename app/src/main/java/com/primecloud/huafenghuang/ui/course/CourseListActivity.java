@@ -32,6 +32,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 带二级tab的列表页
+ */
 public class CourseListActivity extends BasePresenterActivity<MainCoursePresenter,MainCourseModel> implements MainCourseContract.View,View.OnClickListener {
 
 
@@ -97,9 +100,6 @@ public class CourseListActivity extends BasePresenterActivity<MainCoursePresente
                 pagerAdapter = new CourseListPagerAdapter(getSupportFragmentManager(), dataBean.getSecTags());
                 mViewPager.setAdapter(pagerAdapter);
                 Utils.reflex(mTab, (int) (getResources().getDisplayMetrics().widthPixels * 0.09), (int) (getResources().getDisplayMetrics().widthPixels * 0.09));
-
-
-
             }
         }
     }
@@ -122,6 +122,7 @@ public class CourseListActivity extends BasePresenterActivity<MainCoursePresente
             pagerList = list;
             hashMap = new HashMap<>();
         }
+
 
         @Override
         public int getCount() {

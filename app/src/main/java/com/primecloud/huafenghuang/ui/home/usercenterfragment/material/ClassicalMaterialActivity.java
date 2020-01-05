@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ViewUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.primecloud.huafenghuang.R;
 import com.primecloud.huafenghuang.adapter.ViewPagerAdapter;
+import com.primecloud.huafenghuang.ui.home.usercenterfragment.account.bean.AccountBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.LikeResultBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.MaterialBean;
 import com.primecloud.huafenghuang.ui.home.usercenterfragment.bean.ResourceTag;
@@ -74,7 +76,7 @@ public class ClassicalMaterialActivity extends BasePresenterActivity<MaterialPre
 
     @Override
     protected void initData() {
-        mToolbar.setToolbarTitleContent("经典素材");
+        mToolbar.setToolbarTitleContent("素材转发");
         com.primecloud.huafenghuang.utils.ViewUtils.setGone(linearLayout);
         fragments = new ArrayList<>();
 
@@ -181,6 +183,11 @@ public class ClassicalMaterialActivity extends BasePresenterActivity<MaterialPre
 
     }
 
+
+    @Override
+    public void showMyAccountData(AccountBean.DataBean accountBean) {
+
+    }
 
     @Override
     public void showPicData(List<MaterialBean.DataBean> picDocuments) {

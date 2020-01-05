@@ -13,6 +13,7 @@ import android.os.Message;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
+import android.util.Log;
 import android.view.View;
 
 import com.alibaba.fastjson.JSON;
@@ -63,6 +64,7 @@ public class UpdateManager {
             public void onSuccess(String data, final BizResult body) {
                 try {
                     if (null!=body) {
+                        Log.i("FJ",body.getData().toString());
                         if (StringUtils.notBlank(body.getData()) && !body.equals("false")) {
                             updateModel = JSON.parseObject(body.getData(), VersionUpdateModel.class);
                             if (updateModel != null) {

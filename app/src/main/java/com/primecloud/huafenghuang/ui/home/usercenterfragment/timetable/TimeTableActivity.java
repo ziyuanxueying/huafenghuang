@@ -55,7 +55,7 @@ public class TimeTableActivity extends BasePresenterActivity<TimeTablePresenter,
 
     @Override
     protected void initData() {
-        mToolbar.setToolbarTitleContent("精品课程");
+        mToolbar.setToolbarTitleContent("精彩活动");
         ViewUtils.setGone(linearLayout);
         Utils.setSwipeRefreshLayout(refreshLayout);
         errorLayout.setErrorType(LoadingLayout.NETWORK_LOADING);

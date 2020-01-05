@@ -171,6 +171,15 @@
         <activity android:name=".ui.home.findfragment.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             />
+        <activity android:name=".ui.course.CourseTypeListActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            />
+        <activity android:name=".ui.course.CourseTypeList2Activity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            />
+        <activity android:name=".ui.course.CatalogActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
+            />
     </application>
 
 </manifest>

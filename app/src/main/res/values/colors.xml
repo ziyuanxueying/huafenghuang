@@ -6,7 +6,7 @@
 
     <color name="theme_color">#FC373C</color>
 
-    <color name="tab_checked">#FDA43A</color>
+    <color name="tab_checked">#F44632</color>
     <color name="tab_unchecked">#333333</color>
     <color name="textcolor_login">#FF999999</color>
     <color name="textcolor_select">#209eea</color>
