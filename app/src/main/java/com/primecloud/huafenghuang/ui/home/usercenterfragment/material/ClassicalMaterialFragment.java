@@ -92,6 +92,12 @@ public class ClassicalMaterialFragment extends BasePresenterFragment<MaterialPre
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        strPath = "/HuaFengHuang/" + UUID.randomUUID().toString() + ".png";
+    }
+
+    @Override
     public void initData() {
 
         downTipPopup = new DownTipPopup(getContext());
@@ -109,7 +115,7 @@ public class ClassicalMaterialFragment extends BasePresenterFragment<MaterialPre
         requestData();
         shareName = MyApplication.getInstance().getUserInfo().getUsername();
         String telRegex = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";// "[1]"代表下一位为数字可以是几，"[0-9]"代表可以为0-9中的一个，"[5,7,9]"表示可以是5,7,9中的任意一位,[^4]表示除4以外的任何一个,\\d{9}"代表后面是可以是0～9的数字，有9位。
-        if (shareName.matches(telRegex)){
+        if (shareName.matches(telRegex)) {
             String share = MyApplication.getInstance().getUserInfo().getUsername();
             shareName = share.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
         } else {
@@ -164,9 +170,15 @@ public class ClassicalMaterialFragment extends BasePresenterFragment<MaterialPre
 
     @Override
     public void showMyAccountData(AccountBean.DataBean accountBean) {
+        String telRegex = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";// "[1]"代表下一位为数字可以是几，"[0-9]"代表可以为0-9中的一个，"[5,7,9]"表示可以是5,7,9中的任意一位,[^4]表示除4以外的任何一个,\\d{9}"代表后面是可以是0～9的数字，有9位。
         if (!TextUtils.isEmpty(accountBean.getRealName())) {
-            shareName = accountBean.getRealName();
+            if (MyApplication.getInstance().getUserInfo().getUsername().matches(telRegex)) {
+                shareName = accountBean.getRealName();
+            } else {
+                shareName = MyApplication.getInstance().getUserInfo().getUsername();
+            }
         }
+
     }
 
     @Override
@@ -293,7 +305,17 @@ public class ClassicalMaterialFragment extends BasePresenterFragment<MaterialPre
                     List<String> pics = dataBean.getResourcePicUrl();
                     if (pics.size() == 1) {// 一張圖分享
                         catchScreen(pics.get(0));
-                        shareUtils.shareWX("", null, "", strPath, "", Platform.SHARE_IMAGE, null);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(500);//延时1s
+                                    shareUtils.shareWX("", null, "", strPath, "", Platform.SHARE_IMAGE, null);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
 
 
                     } else {// 多图分享
@@ -436,7 +458,7 @@ public class ClassicalMaterialFragment extends BasePresenterFragment<MaterialPre
         name.setText("我是" + shareName);
 //        GlideImageUtil.glideImgLoder(this, "http://img1.doubanio.com/pview/event_poster/raw/public/b06690521b14648.jpg", imagePoster);
         GlideImageUtil.glideImgLoder(getActivity(), url, imagePoster);
-        Bitmap qrcode_bitmap = QRCodeUtil.createQRCode("http://admin.huaxiachangxiang.com/api/dis/propaganda/"+ MyApplication.getInstance().getUserInfo().getCode(), 100);
+        Bitmap qrcode_bitmap = QRCodeUtil.createQRCode("http://admin.huaxiachangxiang.com/api/dis/propaganda/" + MyApplication.getInstance().getUserInfo().getCode(), 100);
         imageCode.setImageBitmap(qrcode_bitmap);
         SpannableString spannableString = new SpannableString(getString(R.string.poster_check));
         ForegroundColorSpan span = new ForegroundColorSpan(Color.parseColor("#555555"));
@@ -456,6 +478,17 @@ public class ClassicalMaterialFragment extends BasePresenterFragment<MaterialPre
                 e.printStackTrace();
             }
         }).start();
+//        getActivity().runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(1000);//延时1s
+//                    createPicture(decorView);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
 
     // 2. 将布局转成bitmap
@@ -488,6 +521,8 @@ public class ClassicalMaterialFragment extends BasePresenterFragment<MaterialPre
                 Log.e("MainActivity", "图片生成：" + file.getAbsolutePath());
                 ToastUtils.showToast(getActivity(), "图片保存成功");
                 fos.flush();
+//                ShareUtils shareUtils = new ShareUtils(getActivity());
+//                shareUtils.shareWX("", null, "", strPath, "", Platform.SHARE_IMAGE, null);
 //                imageShare.setVisibility(View.GONE);
             } catch (Exception e) {
                 e.printStackTrace();
